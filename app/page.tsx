@@ -1,31 +1,31 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { getBlogViews, getTweetCount, getStarCount } from 'lib/metrics';
+import Link from "next/link";
+import Image from "next/image";
+import { getBlogViews, getTweetCount, getStarCount } from "lib/metrics";
 import {
   ArrowIcon,
   GitHubIcon,
   TwitterIcon,
   ViewsIcon,
-} from 'components/icons';
-import { name, about, bio, avatar } from 'lib/info';
+} from "components/icons";
+import { name, about, bio, avatar } from "lib/info";
 
 export const revalidate = 60;
 export const metadata = {
-  description: 'Developer, writer, and creator.',
+  description: "Developer, writer, and creator.",
   openGraph: {
-    title: 'Lee Robinson',
-    description: 'Developer, writer, and creator.',
-    url: 'https://leerob.io',
-    siteName: 'Lee Robinson',
+    title: "Darius McFarland",
+    description: "Developer, writer, and creator.",
+    url: "https://leerob.io",
+    siteName: "Darius McFarland",
     images: [
       {
-        url: 'https://leerob.io/og.jpg',
+        url: "https://leerob.io/og.jpg",
         width: 1920,
         height: 1080,
       },
     ],
-    locale: 'en-US',
-    type: 'website',
+    locale: "en-US",
+    type: "website",
   },
 };
 

@@ -1,6 +1,6 @@
 import me from '../app/placeholder.jpg';
 
-export const name = 'Your Name';
+export const name = 'Darius McFarland';
 export const avatar = me;
 export const about = () => {
   return (

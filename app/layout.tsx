@@ -13,8 +13,8 @@ const kaisei = localFont({
 
 export const metadata = {
   title: {
-    default: 'Lee Robinson',
-    template: '%s | Lee Robinson',
+    default: 'Darius McFarland',
+    template: '%s | Darius McFarland',
   },
   robots: {
     index: true,

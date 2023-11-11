@@ -1,35 +1,40 @@
 import Link from 'next/link';
 import { allBlogs } from 'contentlayer/generated';
 import ViewCounter from './view-counter';
+import { sanityClient } from 'sanity-client';
 
 export const metadata = {
   title: 'Blog',
   description: 'Read my thoughts on software development, design, and more.',
 };
 
+type BlogPost = {
+  _id: string
+  post_title?: string
+  slug?: {
+    current: string
+  }
+}
+
+
 export default async function BlogPage() {
+  const blogs = await sanityClient.fetch<BlogPost[]>(`*[_type == "blog-post"]`)
+  console.log(blogs);
   return (
-    <section>
-      <h1 className="font-bold text-3xl font-serif mb-5">Blog</h1>
-      {allBlogs
-        .sort((a, b) => {
-          if (new Date(a.publishedAt) > new Date(b.publishedAt)) {
-            return -1;
-          }
-          return 1;
-        })
-        .map((post) => (
-          <Link
-            key={post.slug}
-            className="flex flex-col space-y-1 mb-4"
-            href={`/blog/${post.slug}`}
-          >
-            <div className="w-full flex flex-col">
-              <p>{post.title}</p>
-              <ViewCounter slug={post.slug} trackView={false} />
-            </div>
-          </Link>
-        ))}
-    </section>
+    <>
+      <header>
+        <h1>Sanity + Next.js</h1>
+      </header>
+      <main>
+        <h2>Blog Posts</h2>
+        <ul>
+      {blogs.map((post) => (
+        <li key={post._id}>
+          <a href={post?.slug?.current}>Blog Title: {post?.post_title}</a>
+        </li>
+      ))}
+    </ul>
+      </main>
+    </>
   );
 }

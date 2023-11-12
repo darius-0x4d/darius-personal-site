@@ -16,7 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "contentlayer/generated": ["./.contentlayer/generated"],
-      "sanity/lib/client": ["./sanity/lib/client.ts"] // Fixes issue where project looks to node modules sanity instead of local sanity folder for client export
+      "sanity/lib/*": ["./sanity/lib/*"] // Fixes issue where project looks to node modules sanity instead of local sanity folder for client export
     },
     "incremental": true,
     "plugins": [

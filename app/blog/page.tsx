@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { allBlogs } from "contentlayer/generated";
 import ViewCounter from "./view-counter";
-import { sanityClient } from "sanity-client";
+import { client } from "sanity/lib/client";
 
 export const metadata = {
   title: "Blog",
@@ -17,7 +17,7 @@ type BlogPost = {
 };
 
 export default async function BlogPage() {
-  const blogs = await sanityClient.fetch<BlogPost[]>(`*[_type == "blog-post"]`);
+  const blogs = await client.fetch(`*[_type == "post"]`);
   console.log(blogs);
   return (
     <>

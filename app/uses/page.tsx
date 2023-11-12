@@ -1,5 +1,6 @@
+/* eslint-disable react/no-unescaped-entities */
 export const metadata = {
-  title: 'Uses',
+  title: "Uses",
   description:
     "Here's what tech I'm currently using for coding, videos, and music.",
 };

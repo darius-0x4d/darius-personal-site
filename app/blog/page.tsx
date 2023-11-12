@@ -23,7 +23,7 @@ export default async function BlogPage() {
           {blogs.map((post) => (
             <li key={post._id}>
               <a href={post?.slug?.current}>Blog Title: {post?.title}</a>
-              <IdealImage image={post.mainImage} />
+              {/* <IdealImage image={post.mainImage} /> */}
               <h3>{post.body[0].children[0].text}</h3>
             </li>
           ))}

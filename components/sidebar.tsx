@@ -1,34 +1,34 @@
-'use client';
+"use client";
 
-import clsx from 'clsx';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+import clsx from "clsx";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 const navItems = {
-  '/': {
-    name: 'home',
+  "/": {
+    name: "home",
     x: 0,
     y: 0,
-    w: '64px',
+    w: "64px",
   },
-  '/about': {
-    name: 'about',
+  "/about": {
+    name: "about",
     x: 64,
     y: 35,
-    w: '65px',
+    w: "65px",
   },
-  '/blog': {
-    name: 'blog',
+  "/blog": {
+    name: "blog",
     x: 127,
     y: 69,
-    w: '56px',
+    w: "56px",
   },
-  '/guestbook': {
-    name: 'guestbook',
+  "/guestbook": {
+    name: "guestbook",
     x: 182,
     y: 104,
-    w: '100px',
+    w: "100px",
   },
 };
 
@@ -54,7 +54,7 @@ function Logo() {
           }}
           transition={{
             duration: 0.5,
-            type: 'spring',
+            type: "spring",
             stiffness: 50,
           }}
           d="M39 316V0"
@@ -66,7 +66,7 @@ function Logo() {
           animate={{ x: 0, opacity: 1 }}
           transition={{
             duration: 0.5,
-            type: 'spring',
+            type: "spring",
             stiffness: 50,
           }}
           d="M232 314.998H129.852L232 232.887V314.998Z"
@@ -79,9 +79,10 @@ function Logo() {
 
 export default function Navbar() {
   let pathname = usePathname();
-  if (pathname.includes('/blog/')) {
-    pathname = '/blog';
+  if (pathname?.includes("/blog/")) {
+    pathname = "/blog";
   }
+  pathname = pathname as string;
 
   return (
     <aside className="md:w-[150px] md:flex-shrink-0 -mx-4 md:mx-0 md:px-0 font-serif">
@@ -94,7 +95,7 @@ export default function Navbar() {
           id="nav"
         >
           <div className="flex flex-row md:flex-col space-x-0 pr-10 mb-2 mt-2 md:mt-0">
-            {navItems[pathname] ? (
+            {navItems[pathname as string] ? (
               <>
                 {/* Desktop version, hidden on mobile, animates y axis */}
                 <div className="hidden md:block">
@@ -108,7 +109,7 @@ export default function Navbar() {
                       width: navItems[pathname].w,
                     }}
                     transition={{
-                      type: 'spring',
+                      type: "spring",
                       stiffness: 350,
                       damping: 30,
                     }}
@@ -126,7 +127,7 @@ export default function Navbar() {
                       width: navItems[pathname].w,
                     }}
                     transition={{
-                      type: 'spring',
+                      type: "spring",
                       stiffness: 350,
                       damping: 30,
                     }}
@@ -143,10 +144,10 @@ export default function Navbar() {
                   key={path}
                   href={path}
                   className={clsx(
-                    'transition-all hover:text-neutral-800 dark:hover:text-neutral-200 py-[5px] px-[10px]',
+                    "transition-all hover:text-neutral-800 dark:hover:text-neutral-200 py-[5px] px-[10px]",
                     {
-                      'text-neutral-500': !isActive,
-                      'font-bold': isActive,
+                      "text-neutral-500": !isActive,
+                      "font-bold": isActive,
                     }
                   )}
                 >

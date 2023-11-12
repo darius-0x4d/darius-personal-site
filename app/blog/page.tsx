@@ -21,11 +21,24 @@ export default async function BlogPage() {
       <main>
         <ul>
           {blogs.map((post) => (
-            <li key={post._id}>
-              <a href={post?.slug?.current}>Blog Title: {post?.title}</a>
-              <IdealImage image={post.mainImage} />
-              <h3>{post.body[0].children[0].text}</h3>
-            </li>
+            // <li key={post._id}>
+            //   <a href={post?.slug?.current}>Blog Title: {post?.title}</a>
+            //   <IdealImage image={post.mainImage} />
+            //   <h3>{post.body[0].children[0].text}</h3>
+            // </li>
+
+            <Link
+              key={post._id}
+              className="flex flex-col space-y-1 mb-4"
+              href={`/blog/${post.slug.current}`}
+            >
+              <div className="w-full flex flex-col">
+                <p>{post.title}</p>
+                <IdealImage image={post.mainImage} />
+                <h3>{post.body[0].children[0].text}</h3>
+                {/* <ViewCounter slug={post.slug.current} trackView={false} /> */}
+              </div>
+            </Link>
           ))}
         </ul>
       </main>

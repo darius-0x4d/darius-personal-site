@@ -1,65 +1,82 @@
-import { notFound } from 'next/navigation';
-import { Mdx } from 'components/mdx';
-import { allBlogs } from 'contentlayer/generated';
-import { getTweets } from 'lib/twitter';
-import Balancer from 'react-wrap-balancer';
-import ViewCounter from '../view-counter';
+import { notFound } from "next/navigation";
+import { Mdx } from "components/mdx";
+import { allBlogs } from "contentlayer/generated";
+import { getTweets } from "lib/twitter";
+import Balancer from "react-wrap-balancer";
+import ViewCounter from "../view-counter";
+import { client } from "sanity/lib/client";
+import { PostSchemaType } from "sanity/schema-types/post-schema-type";
+import { Metadata } from "next";
+import { getUrlFilename } from "@sanity/asset-utils";
+import { urlForImage } from "sanity/lib/image";
+import { IdealImage } from "sanity/lib/ideal-image";
 
 export async function generateStaticParams() {
   return allBlogs.map((post) => ({
-    slug: post.slug,
+    slug: post.slug, // slug.current
   }));
 }
 
-export async function generateMetadata({ params }) {
-  const post = allBlogs.find((post) => post.slug === params.slug);
+export async function generateMetadata({ params }): Promise<Metadata> {
+  const post = await client.fetch<PostSchemaType>(
+    `*[_type == "post" && slug.current == "${params.slug}"][0]`
+  );
   if (!post) {
     return;
   }
 
-  const {
-    title,
-    publishedAt: publishedTime,
-    summary: description,
-    image,
-    slug,
-  } = post;
-  const ogImage = image
-    ? `https://leerob.io${image}`
-    : `https://leerob.io/api/og?title=${title}`;
+  // const {
+  //   title: {
+  //     title,
+  //     default: "Another Blog Post",
+  //   },
+  //   publishedAt: publishedTime,
+  //   summary: description,
+  //   image,
+  //   slug,
+  // } = post;
+  // const ogImage = image
+  //   ? `https://leerob.io${image}`
+  //   : `https://leerob.io/api/og?title=${title}`;
 
   return {
-    title,
-    description,
+    title: post.title,
+    description: post.body[0].children[0].text,
     openGraph: {
-      title,
-      description,
-      type: 'article',
-      publishedTime,
-      url: `https://leerob.io/blog/${slug}`,
+      title: post.title,
+      description: post.body[0].children[0].text,
+      type: "article",
+      publishedTime: post._createdAt,
+      // url: `https://leerob.io/blog/${slug}`,
       images: [
         {
-          url: ogImage,
+          url: urlForImage(post.mainImage).url(),
         },
       ],
     },
-    twitter: {
-      card: 'summary_large_image',
-      title,
-      description,
-      images: [ogImage],
-    },
+    // twitter: {
+    //   card: "summary_large_image",
+    //   title,
+    //   description,
+    //   images: [ogImage],
+    // },
   };
 }
 
 export default async function Blog({ params }) {
-  const post = allBlogs.find((post) => post.slug === params.slug);
-
+  // const post = allBlogs.find((post) => post.slug === params.slug);
+  const post = await client.fetch<PostSchemaType>(
+    `*[_type == "post" && slug.current == "${params.slug}"][0]`
+  );
+  // if (!post) {
+  //   notFound();
+  // }
+  console.log(post);
   if (!post) {
     notFound();
   }
 
-  const tweets = await getTweets(post.tweetIds);
+  // const tweets = await getTweets(post.tweetIds);
 
   return (
     <section>
@@ -71,9 +88,11 @@ export default async function Blog({ params }) {
           {post.publishedAt}
         </div>
         <div className="h-[0.2em] bg-neutral-50 dark:bg-neutral-800 mx-2" />
-        <ViewCounter slug={post.slug} trackView />
+        {/* <ViewCounter slug={post.slug} trackView /> */}
       </div>
-      <Mdx code={post.body.code} tweets={tweets} />
+      <IdealImage image={post.mainImage} />
+      <h3>{post.body[0].children[0].text}</h3>
+      {/* <Mdx code={post.body.code} tweets={tweets} /> */}
     </section>
   );
 }

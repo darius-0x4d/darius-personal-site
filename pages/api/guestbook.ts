@@ -7,11 +7,14 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const session = await getSession({ req });
-  const { email, name } = session.user;
 
   if (!session) {
     return res.status(403).send('Unauthorized');
   }
+  
+  const { email, name } = session.user;
+
+  
 
   if (req.method === 'POST') {
     await queryBuilder

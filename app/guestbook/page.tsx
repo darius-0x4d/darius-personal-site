@@ -1,14 +1,14 @@
-import { queryBuilder } from 'lib/planetscale';
-import { SignIn, SignOut } from './actions';
-import { getServerSession } from 'next-auth/next';
-import { authOptions } from 'pages/api/auth/[...nextauth]';
-import Form from './form';
+import { queryBuilder } from "lib/planetscale";
+import { SignIn, SignOut } from "./actions";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "pages/api/auth/[...nextauth]";
+import Form from "./form";
 
 async function getGuestbook() {
   const data = await queryBuilder
-    .selectFrom('guestbook')
-    .select(['id', 'body', 'created_by', 'updated_at'])
-    .orderBy('updated_at', 'desc')
+    .selectFrom("guestbook")
+    .select(["id", "body", "created_by", "updated_at"])
+    .orderBy("updated_at", "desc")
     .limit(100)
     .execute();
 
@@ -16,14 +16,14 @@ async function getGuestbook() {
 }
 
 export const metadata = {
-  title: 'Guestbook',
-  description: 'Sign my guestbook and leave your mark.',
+  title: "Guestbook",
+  description: "Sign my guestbook and leave your mark.",
 };
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function GuestbookPage() {
-  let entries = [];
+  let entries: any[] = [];
   let session;
 
   try {
@@ -32,13 +32,13 @@ export default async function GuestbookPage() {
       getServerSession(authOptions),
     ]);
 
-    if (guestbookRes.status === 'fulfilled' && guestbookRes.value[0]) {
+    if (guestbookRes.status === "fulfilled" && guestbookRes.value[0]) {
       entries = guestbookRes.value;
     } else {
       console.error(guestbookRes);
     }
 
-    if (sessionRes.status === 'fulfilled') {
+    if (sessionRes.status === "fulfilled") {
       session = sessionRes.value;
     } else {
       console.error(sessionRes);

@@ -12,11 +12,15 @@ const nextConfig = {
         hostname: 'pbs.twimg.com',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        port: '',
+        pathname: '/images/**',
+      },
     ],
   },
-  experimental: {
-    appDir: true,
-  },
+  experimental: {},
   redirects() {
     try {
       return get('redirects');

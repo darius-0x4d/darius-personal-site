@@ -1,18 +1,21 @@
-import me from '../app/mr-krabs-confused.jpg';
+/* eslint-disable react/no-unescaped-entities */
+import me from "../app/mr-krabs-confused.jpg";
 
-export const name = 'Darius McFarland';
+export const name = "Darius McFarland";
 export const avatar = me;
 export const about = () => {
   return (
     <>
-      Hey, I'm a developer who loves Next.js. I work at BigCo or CoolStartup as a Software Engineer.
+      Hey, I'm a developer who loves Next.js. I work at BigCo or CoolStartup as
+      a Software Engineer.
     </>
   );
 };
 export const bio = () => {
   return (
     <>
-      When I'm not coding, I'm probably playing video games or watching anime. I also love to travel and explore new places.
+      When I'm not coding, I'm probably playing video games or watching anime. I
+      also love to travel and explore new places.
     </>
   );
 };

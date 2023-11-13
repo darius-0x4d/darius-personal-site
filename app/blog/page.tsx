@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/card";
 import { CircleIcon } from "@radix-ui/react-icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 
 export const metadata = {
   title: "Blog",
@@ -49,7 +50,7 @@ export default async function BlogPage() {
                         <div className="flex col-span-1">
                           <Avatar>
                             <AvatarImage
-                              class="rounded-full w-8 h-8 self-center"
+                              className="rounded-full w-8 h-8 self-center"
                               src="/images/mr-krabs-confused.jpg"
                             />
                             <AvatarFallback>DM</AvatarFallback>

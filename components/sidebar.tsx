@@ -157,6 +157,7 @@ export default function Navbar() {
               );
             })}
           </div>
+          <ModeToggle />
         </nav>
       </div>
     </aside>

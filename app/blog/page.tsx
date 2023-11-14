@@ -8,9 +8,11 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { CircleIcon } from "@radix-ui/react-icons";
+import { CircleIcon, CornersIcon } from "@radix-ui/react-icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ModeToggle } from "@/components/ui/mode-toggle";
+import { Separator } from "@/components/ui/separator";
+import { Badge } from "@/components/ui/badge";
+import { prettyPrintDate } from "@/lib/utils";
 
 export const metadata = {
   title: "Blog",
@@ -60,11 +62,11 @@ export default async function BlogPage() {
                           </p>
                         </div>
                         <div className="flex items-center col-span-1">
-                          <CircleIcon className="mr-1 h-3 w-3 fill-sky-400 text-sky-400" />
+                          <CornersIcon className="mr-1 h-4 w-4 fill-sky-400 text-sky-400" />
                           TypeScript
                         </div>
                         <div className="text-sm flex self-center justify-end col-span-1">
-                          Updated April 2023
+                          {prettyPrintDate(post.publishedAt)}
                         </div>
                       </div>
                     </div>

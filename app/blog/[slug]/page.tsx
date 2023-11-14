@@ -5,15 +5,18 @@ import { getTweets } from "lib/twitter";
 import Balancer from "react-wrap-balancer";
 import ViewCounter from "../view-counter";
 import { client } from "sanity/lib/client";
-import { PostSchemaType } from "sanity/schema-types/post-schema-type";
+import { PostSchemaType, Slug } from "sanity/schema-types/post-schema-type";
 import { Metadata } from "next";
 import { getUrlFilename } from "@sanity/asset-utils";
 import { urlForImage } from "sanity/lib/image";
 import { IdealImage } from "sanity/lib/ideal-image";
+import { prettyPrintDate } from "@/lib/utils";
 
 export async function generateStaticParams() {
-  return allBlogs.map((post) => ({
-    slug: post.slug, // slug.current
+  const slugs = await client.fetch<Slug[]>(`*[_type == "post"]{slug}`);
+
+  return slugs.map((slug) => ({
+    slug: slug.current,
   }));
 }
 
@@ -21,6 +24,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   const post = await client.fetch<PostSchemaType>(
     `*[_type == "post" && slug.current == "${params.slug}"][0]`
   );
+  console.log(post);
   if (!post) {
     return;
   }
@@ -64,19 +68,13 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 }
 
 export default async function Blog({ params }) {
-  // const post = allBlogs.find((post) => post.slug === params.slug);
   const post = await client.fetch<PostSchemaType>(
     `*[_type == "post" && slug.current == "${params.slug}"][0]`
   );
-  // if (!post) {
-  //   notFound();
-  // }
-  console.log(post);
+
   if (!post) {
     notFound();
   }
-
-  // const tweets = await getTweets(post.tweetIds);
 
   return (
     <section>
@@ -85,10 +83,9 @@ export default async function Blog({ params }) {
       </h1>
       <div className="grid grid-cols-[auto_1fr_auto] items-center mt-4 mb-8 font-mono text-sm max-w-[650px]">
         <div className="bg-neutral-100 dark:bg-neutral-800 rounded-md px-2 py-1 tracking-tighter">
-          {post.publishedAt}
+          {prettyPrintDate(post.publishedAt)}
         </div>
         <div className="h-[0.2em] bg-neutral-50 dark:bg-neutral-800 mx-2" />
-        {/* <ViewCounter slug={post.slug} trackView /> */}
       </div>
       <IdealImage image={post.mainImage} />
       <h3>{post.body[0].children[0].text}</h3>

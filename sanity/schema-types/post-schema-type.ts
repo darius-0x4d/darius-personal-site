@@ -8,9 +8,34 @@ export type PostSchemaType = {
     mainImage: any;
     body: any[];
     publishedAt: string;
+    categories: Categories[];
+    author: Author;
 };
 
-type Slug = {
+export type Slug = {
     _type: 'slug';
     current: string;
+}
+
+type Categories = {
+    description: string;
+    title: string;
+}
+
+type Author = {
+    _type: 'author';
+    _id: string;
+    bio: any[];
+    image: Image;
+    name: string;
+
+}
+
+type Image = {
+    _type: 'image';
+    alt: string;
+    asset: {
+        _ref: string;
+        _type: 'reference';
+    }
 }

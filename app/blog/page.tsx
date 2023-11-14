@@ -8,11 +8,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { CircleIcon, CornersIcon } from "@radix-ui/react-icons";
+import { CornersIcon } from "@radix-ui/react-icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Separator } from "@/components/ui/separator";
-import { Badge } from "@/components/ui/badge";
 import { prettyPrintDate } from "@/lib/utils";
+import { urlForImage } from "sanity/lib/image";
 
 export const metadata = {
   title: "Blog",
@@ -20,7 +19,9 @@ export const metadata = {
 };
 
 export default async function BlogPage() {
-  const blogs = await client.fetch<PostSchemaType[]>(`*[_type == "post"]`);
+  const blogs = await client.fetch<PostSchemaType[]>(
+    `*[_type == "post"]{..., "categories": categories[]->, "author": author->}`
+  );
   console.log(blogs);
   // Create no blogs placeholder
   return (
@@ -53,17 +54,17 @@ export default async function BlogPage() {
                           <Avatar>
                             <AvatarImage
                               className="rounded-full w-8 h-8 self-center"
-                              src="/images/mr-krabs-confused.jpg"
+                              src={urlForImage(post.author.image).url()}
                             />
                             <AvatarFallback>DM</AvatarFallback>
                           </Avatar>
                           <p className="pl-2 font-medium leading-none self-center">
-                            Darius McFarland
+                            {post.author.name}
                           </p>
                         </div>
                         <div className="flex items-center col-span-1">
                           <CornersIcon className="mr-1 h-4 w-4 fill-sky-400 text-sky-400" />
-                          TypeScript
+                          {post.categories[0].title}
                         </div>
                         <div className="text-sm flex self-center justify-end col-span-1">
                           {prettyPrintDate(post.publishedAt)}

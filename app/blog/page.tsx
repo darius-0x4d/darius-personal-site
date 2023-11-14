@@ -1,9 +1,17 @@
 import Link from "next/link";
-import { allBlogs } from "contentlayer/generated";
-import ViewCounter from "./view-counter";
 import { client } from "sanity/lib/client";
 import { PostSchemaType } from "sanity/schema-types/post-schema-type";
 import { IdealImage } from "sanity/lib/ideal-image";
+import {
+  Card,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { CornersIcon } from "@radix-ui/react-icons";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { prettyPrintDate } from "@/lib/utils";
+import { urlForImage } from "sanity/lib/image";
 
 export const metadata = {
   title: "Blog",
@@ -11,21 +19,62 @@ export const metadata = {
 };
 
 export default async function BlogPage() {
-  const blogs = await client.fetch<PostSchemaType[]>(`*[_type == "post"]`);
+  const blogs = await client.fetch<PostSchemaType[]>(
+    `*[_type == "post"]{..., "categories": categories[]->, "author": author->}`
+  );
   console.log(blogs);
+  // Create no blogs placeholder
   return (
     <>
-      <header>
-        <h1>Blog Posts</h1>
-      </header>
       <main>
         <ul>
           {blogs.map((post) => (
-            <li key={post._id}>
-              <a href={post?.slug?.current}>Blog Title: {post?.title}</a>
-              <IdealImage image={post.mainImage} />
-              <h3>{post.body[0].children[0].text}</h3>
-            </li>
+            <Card key={post._id}>
+              <Link
+                className="flex flex-col space-y-1"
+                href={`/blog/${post.slug.current}`}
+              >
+                <div className="w-full flex flex-col">
+                  <CardHeader className="grid grid-cols-3 items-start gap-8 space-y-0">
+                    <div className="col-span-1">
+                      <IdealImage image={post.mainImage} />
+                    </div>
+
+                    <div className="space-y-1 col-span-2">
+                      <CardTitle className="scroll-m-20 text-2xl font-semibold tracking-tight">
+                        {post.title}
+                      </CardTitle>
+
+                      <CardDescription className="pt-4">
+                        {post.body[0].children[0].text}
+                      </CardDescription>
+
+                      <div className="flex space-x-4 text-sm text-muted-foreground pt-20 grid-cols-3">
+                        <div className="flex col-span-1">
+                          <Avatar>
+                            <AvatarImage
+                              className="rounded-full w-8 h-8 self-center"
+                              src={urlForImage(post.author.image).url()}
+                            />
+                            <AvatarFallback>DM</AvatarFallback>
+                          </Avatar>
+                          <p className="pl-2 font-medium leading-none self-center">
+                            {post.author.name}
+                          </p>
+                        </div>
+                        <div className="flex items-center col-span-1">
+                          <CornersIcon className="mr-1 h-4 w-4 fill-sky-400 text-sky-400" />
+                          {post.categories[0].title}
+                        </div>
+                        <div className="text-sm flex self-center justify-end col-span-1">
+                          {prettyPrintDate(post.publishedAt)}
+                        </div>
+                      </div>
+                    </div>
+                  </CardHeader>
+                </div>
+              </Link>
+            </Card>
           ))}
         </ul>
       </main>

@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ModeToggle } from "@/components/ui/mode-toggle";
 
 const navItems = {
   "/": {
@@ -156,6 +157,7 @@ export default function Navbar() {
               );
             })}
           </div>
+          <ModeToggle />
         </nav>
       </div>
     </aside>

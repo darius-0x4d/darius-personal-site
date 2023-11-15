@@ -70,6 +70,10 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "orbit": 'spin 4s linear forwards infinite',
+        "orbit2": 'spin 7s linear reverse infinite',
+        "orbit3": 'spin 9s linear forwards infinite',
+        "orbit4": 'spin 10s linear reverse infinite',
       },
     },
   },

@@ -44,7 +44,7 @@ export default async function HomePage() {
   }
 
   return (
-    <section className="grid grid-rows-[repeat(2,_minmax(0,_0.5fr))] gap-y-16">
+    <section className="grid grid-rows-[repeat(2,_minmax(0,_0.5fr))] lg:gap-y-16">
       <div className="mt-12">
         <BlurredBackground />
       </div>

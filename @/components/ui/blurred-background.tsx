@@ -4,7 +4,7 @@ import * as React from "react";
 
 export const BlurredBackground = (): JSX.Element => {
   return (
-    <div className="absolute flex-initial w-screen items-center justify-center h-48 lg:h-32">
+    <div className="absolute flex-initial w-[90vw] items-center justify-center h-48 lg:h-32">
       <div className="absolute inset-0 flex items-center justify-center overflow-hidden blur-[10vw] saturate-150">
         <div className="absolute h-full w-full animate-orbit">
           <div className="absolute left-[25%] top-[25%] w-[50%] rounded-full bg-sky-500 pb-[50%]"></div>

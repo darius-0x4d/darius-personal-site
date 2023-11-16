@@ -6,8 +6,9 @@ export const avatar = me;
 export const about = () => {
   return (
     <>
-      Hey, I'm a developer who loves Next.js. I work at BigCo or CoolStartup as
-      a Software Engineer.
+      I'm a fullstack software engineer that helps design, create, and maintain
+      accessible and engaging user experiences for one of the largest financial
+      institutions in the world.
     </>
   );
 };

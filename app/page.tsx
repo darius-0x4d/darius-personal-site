@@ -45,16 +45,16 @@ export default async function HomePage() {
 
   return (
     <section className="grid grid-rows-[repeat(2,_minmax(0,_0.5fr))] lg:gap-y-16">
-      <div className="mt-12 h-[31.25rem]">
+      <div className="mt-12 h-[37.25rem]">
         <BlurredBackground />
       </div>
       <div className="">
-        <span className="text-xl text-muted-foreground">{"What's good? I'm"}</span>
-        <h1 className="font-bold text-3xl font-serif">{name}</h1>
-        <p className="my-5 max-w-[460px] text-neutral-800 dark:text-neutral-200">
+        <span className="text-2xl text-muted-foreground">{"What's good? I'm"}</span>
+        <h1 className="font-bold text-3xl mt-1">{name}</h1>
+        <p className="text-lg my-5 max-w-[460px] text-neutral-800 dark:text-neutral-200">
           {about()}
         </p>
-        <h2 className="text-xl text-muted-foreground">{"How'd I get here?"}</h2>
+        <h2 className="text-2xl text-muted-foreground">{"How'd I get here?"}</h2>
         <section className="flex justify-center pt-8">
           <div className="w-80">
             <ul>
@@ -71,8 +71,8 @@ export default async function HomePage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-md">August 2020 - Present</p>
-                  <p className="mt-2 text-sm">
+                  <p className="text-lg font-bold">August 2020 - Present</p>
+                  <p className="mt-2 text-md">
                     Software Engineer at BlackRock
                   </p>
                 </div>
@@ -90,8 +90,8 @@ export default async function HomePage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-md ">May 2020</p>
-                  <p className="mt-2 text-sm">
+                  <p className="text-lg font-bold">May 2020</p>
+                  <p className="mt-2 text-md">
                     Graduated from NC State University
                   </p>
                 </div>
@@ -109,15 +109,15 @@ export default async function HomePage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-md ">May 2019 - August 2019</p>
-                  <p className="mt-2 text-sm">Interned with BlackRock</p>
+                  <p className="text-lg font-bold">May 2019 - August 2019</p>
+                  <p className="mt-2 text-md">Interned with BlackRock</p>
                 </div>
               </li>
             </ul>
           </div>
         </section>
 
-        <h2 className="mt-4 text-xl text-muted-foreground">Hit me up</h2>
+        <h2 className="mt-4 text-2xl text-muted-foreground">Hit me up</h2>
 
         <ul className="flex flex-row md:flex-col justify-center mt-4 pb-4 space-x-4 md:space-x-0  md:space-y-4 font-sm text-neutral-500 dark:text-neutral-400">
           <li>
@@ -127,8 +127,8 @@ export default async function HomePage() {
               target="_blank"
               href="https://twitter.com/darius_0x4d"
             >
-              <TwitterLogoIcon className="h-6 w-6 " />
-              <span className="pl-4">Twitter</span>
+              <TwitterLogoIcon className="h-7 w-7 " />
+              <span className="pl-4 text-lg">Twitter</span>
             </a>
           </li>
           <li>
@@ -138,8 +138,8 @@ export default async function HomePage() {
               target="_blank"
               href="https://github.com/darius-0x4d"
             >
-              <GitHubLogoIcon className="h-6 w-6 " />
-              <span className="pl-4">Github</span>
+              <GitHubLogoIcon className="h-7 w-7 " />
+              <span className="pl-4 text-lg">Github</span>
             </a>
           </li>
           <li>
@@ -149,8 +149,8 @@ export default async function HomePage() {
               target="_blank"
               href="https://www.linkedin.com/in/darius-mcfarland/"
             >
-              <LinkedInLogoIcon className="h-6 w-6 " />
-              <span className="pl-4">LinkedIn</span>
+              <LinkedInLogoIcon className="h-7 w-7 " />
+              <span className="pl-4 text-lg">LinkedIn</span>
             </a>
           </li>
         </ul>

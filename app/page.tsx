@@ -50,12 +50,12 @@ export default async function HomePage() {
       </div>
       <div className="">
         <span className="text-2xl text-muted-foreground">{"What's good? I'm"}</span>
-        <h1 className="font-bold text-3xl mt-1">{name}</h1>
+        <h1 className="font-bold text-3xl mt-1 text-sky-500 dark:text-cyan-500">{name}</h1>
         <p className="text-lg my-5 max-w-[460px] text-neutral-800 dark:text-neutral-200">
           {about()}
         </p>
         <h2 className="text-2xl text-muted-foreground">{"How'd I get here?"}</h2>
-        <section className="flex justify-center pt-8">
+        <section className="flex justify-center pt-4">
           <div className="w-80">
             <ul>
               <li className="relative flex items-baseline gap-6 pb-5">
@@ -71,7 +71,7 @@ export default async function HomePage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-lg font-bold">August 2020 - Present</p>
+                  <p className="text-lg font-bold dark:text-cyan-500">August 2020 - Present</p>
                   <p className="mt-2 text-md">
                     Software Engineer at BlackRock
                   </p>
@@ -90,7 +90,7 @@ export default async function HomePage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-lg font-bold">May 2020</p>
+                  <p className="text-lg font-bold dark:text-cyan-500">May 2020</p>
                   <p className="mt-2 text-md">
                     Graduated from NC State University
                   </p>
@@ -109,7 +109,7 @@ export default async function HomePage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-lg font-bold">May 2019 - August 2019</p>
+                  <p className="text-lg font-bold dark:text-cyan-500">May 2019 - August 2019</p>
                   <p className="mt-2 text-md">Interned with BlackRock</p>
                 </div>
               </li>

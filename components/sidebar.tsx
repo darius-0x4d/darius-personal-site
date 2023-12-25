@@ -86,13 +86,13 @@ export default function Navbar() {
   pathname = pathname as string;
 
   return (
-    <aside className="md:w-[150px] md:flex-shrink-0 -mx-4 md:mx-0 md:px-0 font-serif">
+    <aside className="md:w-[150px] md:flex-shrink-0 -mx-4 md:mx-0 md:px-0">
       <div className="lg:sticky lg:top-20">
         <div className="ml-2 md:ml-[12px] mb-2 px-4 md:px-0 md:mb-8 space-y-10 flex flex-col md:flex-row items-start ">
           <Logo />
         </div>
         <nav
-          className="flex flex-row md:flex-col items-start relative overflow-scroll px-4 md:px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
+          className="flex flex-row md:flex-col items-start relative overflow-hidden px-4 md:px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
           id="nav"
         >
           <div className="flex flex-row md:flex-col space-x-0 pr-10 mb-2 mt-2 md:mt-0">
@@ -101,7 +101,7 @@ export default function Navbar() {
                 {/* Desktop version, hidden on mobile, animates y axis */}
                 <div className="hidden md:block">
                   <motion.div
-                    className="absolute bg-neutral-100 dark:bg-neutral-800 h-[34px] rounded-md z-[-1]"
+                    className="absolute bg-accent dark:bg-slate-800 h-[34px] rounded-md z-[-1]"
                     layoutId="test2"
                     initial={{ opacity: 0, y: navItems[pathname].y }}
                     animate={{
@@ -119,7 +119,7 @@ export default function Navbar() {
                 {/* Mobile version, hidden on desktop, animates x axis */}
                 <div className="block md:hidden">
                   <motion.div
-                    className="absolute bg-neutral-100 dark:bg-neutral-800 h-[34px] rounded-md z-[-1]"
+                    className="absolute bg-accent dark:bg-slate-800 h-[34px] rounded-md z-[-1]"
                     layoutId="test"
                     initial={{ opacity: 0, x: navItems[pathname].x }}
                     animate={{
@@ -147,7 +147,7 @@ export default function Navbar() {
                   className={clsx(
                     "transition-all hover:text-neutral-800 dark:hover:text-neutral-200 py-[5px] px-[10px]",
                     {
-                      "text-neutral-500": !isActive,
+                      "text-muted-foreground": !isActive,
                       "font-bold": isActive,
                     }
                   )}

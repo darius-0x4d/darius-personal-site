@@ -1,6 +1,7 @@
 import "./globals.css";
 import clsx from "clsx";
-import localFont from "@next/font/local";
+import localFont from "next/font/local";
+import {Raleway} from "next/font/google";
 import Sidebar from "../components/sidebar";
 import AnalyticsWrapper from "../components/analytics";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -12,6 +13,11 @@ const kaisei = localFont({
   variable: "--font-kaisei",
   display: "swap",
 });
+
+const raleway =  Raleway({
+  subsets: ['latin'],
+  display: 'swap',
+})
 
 export const metadata = {
   title: {
@@ -52,9 +58,9 @@ export default function RootLayout({
       <html
         suppressHydrationWarning
         lang="en"
-        className={clsx(kaisei.variable)}
+        className={raleway.className}
       >
-        <body className="antialiased max-w-4xl mb-40 flex flex-col md:flex-row mx-4 mt-8 md:mt-20 lg:mt-32 lg:mx-auto">
+        <body className="antialiased overflow-x-hidden max-w-4xl mb-40 flex flex-col md:flex-row mx-4 mt-8 md:mt-20 lg:mt-32 lg:mx-auto ">
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

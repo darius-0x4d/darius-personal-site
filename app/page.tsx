@@ -54,8 +54,8 @@ export default async function HomePage() {
         <p className="text-lg my-5 max-w-[460px] text-neutral-800 dark:text-neutral-200">
           {about()}
         </p>
-        <h2 className="text-2xl text-muted-foreground">{"How'd I get here?"}</h2>
-        <section className="flex justify-center pt-4">
+        <h2 className="text-2xl dark:text-muted-foreground font-medium">{"How'd I get here?"}</h2>
+        <section className="flex justify-center md:justify-normal pt-4 md:pl-8">
           <div className="w-80">
             <ul>
               <li className="relative flex items-baseline gap-6 pb-5">
@@ -117,9 +117,9 @@ export default async function HomePage() {
           </div>
         </section>
 
-        <h2 className="mt-4 text-2xl text-muted-foreground">Hit me up</h2>
+        <h2 className="mt-4 text-2xl dark:text-muted-foreground font-medium">Hit me up</h2>
 
-        <ul className="flex flex-row md:flex-col justify-center mt-4 pb-4 space-x-4 md:space-x-0  md:space-y-4 font-sm text-neutral-500 dark:text-neutral-400">
+        <ul className="flex flex-row md:flex-col justify-center mt-4 pb-4 md:pl-4 space-x-4 md:space-x-0  md:space-y-4 font-sm text-neutral-500 dark:text-neutral-100">
           <li>
             <a
               className="flex items-center hover:text-neutral-700 dark:hover:text-neutral-200 transition-all"

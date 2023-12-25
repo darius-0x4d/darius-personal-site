@@ -147,7 +147,7 @@ export default function Navbar() {
                   className={clsx(
                     "transition-all hover:text-neutral-800 dark:hover:text-neutral-200 py-[5px] px-[10px]",
                     {
-                      "text-neutral-500": !isActive,
+                      "text-muted-foreground": !isActive,
                       "font-bold": isActive,
                     }
                   )}

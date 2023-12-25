@@ -51,7 +51,7 @@ export default async function HomePage() {
       <div className="">
         <span className="text-2xl text-muted-foreground">{"What's good? I'm"}</span>
         <h1 className="font-bold text-3xl mt-1 text-sky-500 dark:text-cyan-500">{name}</h1>
-        <p className="text-lg my-5 max-w-[460px] text-neutral-800 dark:text-neutral-200">
+        <p className="text-lg my-5 max-w-[460px] text-neutral-950 dark:text-neutral-100">
           {about()}
         </p>
         <h2 className="text-2xl dark:text-muted-foreground font-medium">{"How'd I get here?"}</h2>
@@ -72,7 +72,7 @@ export default async function HomePage() {
                 </div>
                 <div>
                   <p className="text-lg font-bold dark:text-cyan-500">August 2020 - Present</p>
-                  <p className="mt-2 text-md">
+                  <p className="mt-2 text-md text-neutral-800 dark:text-neutral-200">
                     Software Engineer at BlackRock
                   </p>
                 </div>
@@ -91,7 +91,7 @@ export default async function HomePage() {
                 </div>
                 <div>
                   <p className="text-lg font-bold dark:text-cyan-500">May 2020</p>
-                  <p className="mt-2 text-md">
+                  <p className="mt-2 text-md text-neutral-800 dark:text-neutral-200">
                     Graduated from NC State University
                   </p>
                 </div>
@@ -110,7 +110,7 @@ export default async function HomePage() {
                 </div>
                 <div>
                   <p className="text-lg font-bold dark:text-cyan-500">May 2019 - August 2019</p>
-                  <p className="mt-2 text-md">Interned with BlackRock</p>
+                  <p className="mt-2 text-md text-neutral-800 dark:text-neutral-200">Interned with BlackRock</p>
                 </div>
               </li>
             </ul>
@@ -119,7 +119,7 @@ export default async function HomePage() {
 
         <h2 className="mt-4 text-2xl dark:text-muted-foreground font-medium">Hit me up</h2>
 
-        <ul className="flex flex-row md:flex-col justify-center mt-4 pb-4 md:pl-4 space-x-4 md:space-x-0  md:space-y-4 font-sm text-neutral-500 dark:text-neutral-100">
+        <ul className="flex flex-row md:flex-col justify-center mt-4 pb-4 md:pl-4 space-x-4 md:space-x-0  md:space-y-4 font-sm text-neutral-800 dark:text-neutral-100">
           <li>
             <a
               className="flex items-center hover:text-neutral-700 dark:hover:text-neutral-200 transition-all"

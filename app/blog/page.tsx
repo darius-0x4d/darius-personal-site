@@ -12,6 +12,7 @@ import { CornersIcon } from "@radix-ui/react-icons";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { prettyPrintDate } from "@/lib/utils";
 import { urlForImage } from "sanity/lib/image";
+import { Separator } from "@/components/ui/separator";
 
 export const metadata = {
   title: "Blog",
@@ -31,16 +32,27 @@ export default async function BlogPage() {
           {blogs.map((post) => (
             <Card key={post._id}>
               <Link
-                className="flex flex-col space-y-1"
+                className="flex md:flex-col space-y-1"
                 href={`/blog/${post.slug.current}`}
               >
-                <div className="w-full flex flex-col">
-                  <CardHeader className="grid grid-cols-3 items-start gap-8 space-y-0">
-                    <div className="col-span-1">
+                <div className="w-full flex md:flex-col">
+                  <CardHeader className="grid md:grid-cols-3 items-start gap-8 space-y-0">
+                    <div className="justify-self-center md:col-span-1 md:justify-self-start">
                       <IdealImage image={post.mainImage} />
                     </div>
 
-                    <div className="space-y-1 col-span-2">
+                    <div className="space-y-1 md:col-span-2">
+
+                      <div className="md:hidden flex space-x-4 text-sm text-muted-foreground pt-2 pb-4 grid-cols-2">
+                        <div className="flex items-center col-span-1">
+                          <CornersIcon className="mr-1 h-4 w-4 fill-sky-400 text-sky-400" />
+                          {post.categories[0].title}
+                        </div>
+                        <div className="text-sm flex self-center justify-end col-span-1">
+                          {prettyPrintDate(post.publishedAt)}
+                        </div>
+                      </div>
+
                       <CardTitle className="scroll-m-20 text-2xl font-semibold tracking-tight">
                         {post.title}
                       </CardTitle>
@@ -49,8 +61,10 @@ export default async function BlogPage() {
                         {post.body[0].children[0].text}
                       </CardDescription>
 
-                      <div className="flex space-x-4 text-sm text-muted-foreground pt-20 grid-cols-3">
-                        <div className="flex col-span-1">
+                      {/* <div className="hidden md:block"> */}
+                      <div className="pt-4 md:hidden">
+                        <Separator />
+                        <div className="flex pt-4">
                           <Avatar>
                             <AvatarImage
                               className="rounded-full w-8 h-8 self-center"
@@ -62,12 +76,28 @@ export default async function BlogPage() {
                             {post.author.name}
                           </p>
                         </div>
-                        <div className="flex items-center col-span-1">
-                          <CornersIcon className="mr-1 h-4 w-4 fill-sky-400 text-sky-400" />
-                          {post.categories[0].title}
-                        </div>
-                        <div className="text-sm flex self-center justify-end col-span-1">
-                          {prettyPrintDate(post.publishedAt)}
+                      </div>
+                      <div className="hidden md:block">
+                        <div className="flex space-x-4 text-sm text-muted-foreground pt-20 grid-cols-3">
+                          <div className="flex col-span-1">
+                            <Avatar>
+                              <AvatarImage
+                                className="rounded-full w-8 h-8 self-center"
+                                src={urlForImage(post.author.image).url()}
+                              />
+                              <AvatarFallback>DM</AvatarFallback>
+                            </Avatar>
+                            <p className="pl-2 font-medium leading-none self-center">
+                              {post.author.name}
+                            </p>
+                          </div>
+                          <div className="flex items-center col-span-1">
+                            <CornersIcon className="mr-1 h-4 w-4 fill-sky-400 text-sky-400" />
+                            {post.categories[0].title}
+                          </div>
+                          <div className="text-sm flex self-center justify-end col-span-1">
+                            {prettyPrintDate(post.publishedAt)}
+                          </div>
                         </div>
                       </div>
                     </div>

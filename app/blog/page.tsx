@@ -61,7 +61,6 @@ export default async function BlogPage() {
                         {post.body[0].children[0].text}
                       </CardDescription>
 
-                      {/* <div className="hidden md:block"> */}
                       <div className="pt-4 md:hidden">
                         <Separator />
                         <div className="flex pt-4">

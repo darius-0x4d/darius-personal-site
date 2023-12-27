@@ -77,18 +77,21 @@ export default async function Blog({ params }) {
 
   return (
     <section>
-      <h1 className="font-bold text-3xl font-serif max-w-[650px]">
+      <h1 className="font-extrabold text-3xl max-w-[650px]">
         <Balancer>{post.title}</Balancer>
       </h1>
-      <div className="grid grid-cols-[auto_1fr_auto] items-center mt-4 mb-8 font-mono text-sm max-w-[650px]">
-        <div className="bg-neutral-100 dark:bg-neutral-800 rounded-md px-2 py-1 tracking-tighter">
+      <div className="grid grid-cols-[auto_1fr_auto] pb-8 max-w-[650px]">
+        <div className="pt-1 tracking-tighter text-sm text-muted-foreground">
           {prettyPrintDate(post.publishedAt)}
         </div>
-        <div className="h-[0.2em] bg-neutral-50 dark:bg-neutral-800 mx-2" />
       </div>
-      <IdealImage image={post.mainImage} />
-      <h3>{post.body[0].children[0].text}</h3>
-      {/* <Mdx code={post.body.code} tweets={tweets} /> */}
+      <div className="flex justify-center">
+        <IdealImage image={post.mainImage} />
+      </div>
+
+      <div className="pt-4">
+        {post.body[0].children[0].text}
+      </div>
     </section>
   );
 }

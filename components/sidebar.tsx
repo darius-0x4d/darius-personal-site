@@ -13,22 +13,16 @@ const navItems = {
     y: 0,
     w: "64px",
   },
-  "/about": {
-    name: "about",
-    x: 64,
-    y: 35,
-    w: "65px",
-  },
   "/blog": {
     name: "blog",
-    x: 127,
-    y: 69,
+    x: 63,
+    y: 34,
     w: "56px",
   },
   "/guestbook": {
     name: "guestbook",
-    x: 182,
-    y: 104,
+    x: 118,
+    y: 69,
     w: "100px",
   },
 };
@@ -157,7 +151,9 @@ export default function Navbar() {
               );
             })}
           </div>
-          <ModeToggle />
+          <div className="mt-1 md:mt-0">
+            <ModeToggle />
+          </div>
         </nav>
       </div>
     </aside>

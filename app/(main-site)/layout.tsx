@@ -1,20 +1,10 @@
 import "./globals.css";
-import clsx from "clsx";
-import localFont from "next/font/local";
-import {Raleway} from "next/font/google";
-import Sidebar from "../components/sidebar";
-import AnalyticsWrapper from "../components/analytics";
+import { Raleway } from "next/font/google";
+import Sidebar from "../../components/sidebar";
+import AnalyticsWrapper from "../../components/analytics";
 import { ThemeProvider } from "@/components/theme-provider";
-import { ModeToggle } from "@/components/ui/mode-toggle";
 
-const kaisei = localFont({
-  src: "../public/fonts/kaisei-tokumin-latin-700-normal.woff2",
-  weight: "700",
-  variable: "--font-kaisei",
-  display: "swap",
-});
-
-const raleway =  Raleway({
+const raleway = Raleway({
   subsets: ['latin'],
   display: 'swap',
 })

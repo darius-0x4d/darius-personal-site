@@ -1,10 +1,7 @@
-import Link from "next/link";
-import Image from "next/image";
 import { getBlogViews, getTweetCount, getStarCount } from "lib/metrics";
-import { name, about, bio, avatar } from "lib/info";
+import { name, about } from "lib/info";
 import { BlurredBackground } from "@/components/ui/blurred-background";
 import {
-  CornersIcon,
   GitHubLogoIcon,
   LinkedInLogoIcon,
   TwitterLogoIcon,
@@ -48,7 +45,7 @@ export default async function HomePage() {
       <div className="mt-12 h-[37.25rem]">
         <BlurredBackground />
       </div>
-      <div className="">
+      <div>
         <span className="text-2xl text-muted-foreground">{"What's good? I'm"}</span>
         <h1 className="font-bold text-3xl mt-1 text-sky-500 dark:text-cyan-500">{name}</h1>
         <p className="text-lg my-5 max-w-[460px] text-neutral-950 dark:text-neutral-100">

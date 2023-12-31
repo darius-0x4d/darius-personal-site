@@ -43,7 +43,7 @@ const StyledBlock = (props) => {
     block: {
       // Ex. 1: customizing common block types
       h1: ({ children }) => <h1 className="text-3xl font-extrabold tracking-tight scroll-m-20">{children}</h1>,
-      h2: ({ children }) => <h2 className="text-2xl font-extrabold pb-2 text-cyan-500 tracking-tight scroll-m-20 first:mt-0">{children}</h2>,
+      h2: ({ children }) => <h2 className="text-2xl font-extrabold pb-2 text-sky-500 dark:text-cyan-500 tracking-tight scroll-m-20 first:mt-0">{children}</h2>,
       h3: ({ children }) => <h3 className="text-xl font-extrabold text-muted-foreground tracking-tight scroll-m-20">{children}</h3>,
       h4: ({ children }) => <h4 className="text-lg font-extrabold tracking-tight scroll-m-20">{children}</h4>,
       blockquote: ({ children }) => <blockquote className="mt-6 border-l-2 border-l-blockquote pl-6 italic">{children}</blockquote>,

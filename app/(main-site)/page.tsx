@@ -9,10 +9,10 @@ import {
 
 export const revalidate = 60;
 export const metadata = {
-  description: "Developer, writer, and creator.",
+  description: "Developer of accessible and engaging user experiences.",
   openGraph: {
     title: "Darius McFarland",
-    description: "Developer, writer, and creator.",
+    description: "Developer of accessible and engaging user experiences.",
     url: "https://leerob.io",
     siteName: "Darius McFarland",
     images: [

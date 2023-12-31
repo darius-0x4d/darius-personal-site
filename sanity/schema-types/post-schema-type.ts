@@ -7,6 +7,7 @@ export type PostSchemaType = {
     slug: Slug;
     mainImage: any;
     body: any[];
+    overview: any[];
     publishedAt: string;
     categories: Categories[];
     author: Author;

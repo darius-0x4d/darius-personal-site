@@ -7,7 +7,7 @@ module.exports = {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
     './@/**/*.{ts,tsx}', // include shadcn ui components directory
-	],
+  ],
   theme: {
     container: {
       center: true,
@@ -51,6 +51,8 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        blockquote: "hsl(47 88% 61%)",
+        link: "hsl(349 80% 71%)",
       },
       borderRadius: {
         lg: "var(--radius)",

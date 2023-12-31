@@ -116,7 +116,7 @@ export default async function HomePage() {
 
         <h2 className="mt-4 text-2xl dark:text-muted-foreground font-medium">Hit me up</h2>
 
-        <ul className="flex flex-row md:flex-col justify-center mt-4 pb-4 md:pl-4 space-x-4 md:space-x-0  md:space-y-4 font-sm text-neutral-800 dark:text-neutral-100">
+        <ul className="flex flex-row md:flex-col justify-center mt-4 pb-4 md:pl-4 space-x-4 md:space-x-0  md:space-y-4 font-sm text-muted-foreground dark:text-neutral-100">
           <li>
             <a
               className="flex items-center hover:text-neutral-700 dark:hover:text-neutral-200 transition-all"

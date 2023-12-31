@@ -21,25 +21,31 @@ export const metadata = {
 
 export default async function BlogPage() {
   const blogs = await client.fetch<PostSchemaType[]>(
-    `*[_type == "post"]{..., "categories": categories[]->, "author": author->}`
+    `*[_type == "post"]{..., "categories": categories[]->, "author": author->}`,
+    {
+      next: {
+        revalidate: 3600 // look for updates to revalidate cache every hour
+      }
+    }
   );
-  console.log(blogs);
   // Create no blogs placeholder
   return (
     <>
       <main>
         <ul>
           {blogs.map((post) => (
-            <Card key={post._id}>
+            <Card key={post._id} className="mt-8">
               <Link
                 className="flex md:flex-col space-y-1"
                 href={`/blog/${post.slug.current}`}
               >
                 <div className="w-full flex md:flex-col">
                   <CardHeader className="grid md:grid-cols-3 items-start gap-8 space-y-0">
-                    <div className="justify-self-center md:col-span-1 md:justify-self-start">
-                      <IdealImage image={post.mainImage} />
-                    </div>
+                    {post.mainImage ?
+                      <div className="justify-self-center md:col-span-1 md:justify-self-start">
+                        <IdealImage image={post.mainImage} />
+                      </div> : null
+                    }
 
                     <div className="space-y-1 md:col-span-2">
 

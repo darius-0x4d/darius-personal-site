@@ -33,14 +33,14 @@ export default async function BlogPage() {
     <>
       <main>
         <ul>
-          {blogs.map((post) => (
+          {blogs.reverse().map((post) => (
             <Card key={post._id} className="mt-8">
               <Link
                 className="flex md:flex-col space-y-1"
                 href={`/blog/${post.slug.current}`}
               >
                 <div className="w-full flex md:flex-col">
-                  <CardHeader className="grid md:grid-cols-3 items-start gap-8 space-y-0">
+                  <CardHeader className="grid md:grid-cols-3 items-start gap-8 space-y-0 w-full">
                     {post.mainImage ?
                       <div className="justify-self-center md:col-span-1 md:justify-self-start">
                         <IdealImage image={post.mainImage} />
@@ -64,7 +64,7 @@ export default async function BlogPage() {
                       </CardTitle>
 
                       <CardDescription className="pt-4">
-                        {post.body[0].children[0].text}
+                        {post.overview[0].children[0].text}
                       </CardDescription>
 
                       <div className="pt-4 md:hidden">

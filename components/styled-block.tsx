@@ -25,7 +25,7 @@ const StyledBlock = (props) => {
           return <span className="text-muted-foreground font-semibold">{children}</span>
         }
         return (
-          <Link className="text-link underline underline-offset-2 font-semibold" href={value.href} target='_blank' rel={rel}>
+          <Link className="text-link underline underline-offset-2 font-semibold hover:text-rose-500" href={value.href} target='_blank' rel={rel}>
             {children}
           </Link>
         )

@@ -67,7 +67,18 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
 export default async function Blog({ params }) {
   const post = await client.fetch<PostSchemaType>(
-    `*[_type == "post" && slug.current == "${params.slug}"][0]`,
+    `*[_type == "post" && slug.current == "${params.slug}"]{
+      ..., 
+      body[]{
+        ...,
+        markDefs[]{
+          ...,
+          _type == "internalLink" => {
+            "slug": @.reference->slug
+          }
+        },
+      },
+    }[0]`,
     {
       next: {
         revalidate: 3600 // look for updates to revalidate cache every hour

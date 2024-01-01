@@ -31,8 +31,10 @@ const StyledBlock = (props) => {
         )
       },
       internalLink: ({ children, value }) => {
+        const { slug = {} } = value
+        const href = `/blog/${slug.current}`
         return (
-          <Link href={value.href}>
+          <Link className="text-link underline underline-offset-2 font-semibold hover:text-rose-500" href={href} target='_blank' rel='noreferrer'>
             {children}
           </Link>
         )

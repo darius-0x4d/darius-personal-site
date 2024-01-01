@@ -1,5 +1,5 @@
-import { queryBuilder } from 'lib/planetscale';
-import type { NextApiRequest, NextApiResponse } from 'next';
+import { queryBuilder } from "lib/planetscale";
+import type { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(
   req: NextApiRequest,
@@ -8,16 +8,16 @@ export default async function handler(
   try {
     const slug = req.query.slug.toString();
     const data = await queryBuilder
-      .selectFrom('views')
-      .where('slug', '=', slug)
-      .select(['count'])
+      .selectFrom("views")
+      .where("slug", "=", slug)
+      .select(["count"])
       .execute();
 
     const views = !data.length ? 0 : Number(data[0].count);
 
-    if (req.method === 'POST') {
+    if (req.method === "POST") {
       await queryBuilder
-        .insertInto('views')
+        .insertInto("views")
         .values({ slug, count: 1 })
         .onDuplicateKeyUpdate({ count: views + 1 })
         .execute();
@@ -27,7 +27,7 @@ export default async function handler(
       });
     }
 
-    if (req.method === 'GET') {
+    if (req.method === "GET") {
       return res.status(200).json({ total: views });
     }
   } catch (e) {

@@ -48,7 +48,7 @@ export default async function BlogPage() {
                     }
 
 
-                    <div className={`space-y-1 md:${post.mainImage ? "col-span-2" : "col-span-3 md:px-24 md:justify-self-center md:col-start-1"}`}>
+                    <div className={`space-y-1 ${post.mainImage ? "md:col-span-2" : "md:col-span-3 md:px-24 md:justify-self-center md:col-start-1"}`}>
 
                       <div className="md:hidden flex space-x-4 text-sm text-muted-foreground pt-2 pb-4 grid-cols-2">
                         <div className="flex items-center col-span-1">

@@ -1,15 +1,15 @@
 import { notFound } from "next/navigation";
-import { Mdx } from "components/mdx";
-import { getTweets } from "lib/twitter";
 import Balancer from "react-wrap-balancer";
-import ViewCounter from "../view-counter";
 import { client } from "sanity/lib/client";
 import { PostSchemaType, Slug } from "sanity/schema-types/post-schema-type";
 import { Metadata } from "next";
-import { getUrlFilename } from "@sanity/asset-utils";
 import { urlForImage } from "sanity/lib/image";
 import { IdealImage } from "sanity/lib/ideal-image";
 import { prettyPrintDate } from "@/lib/utils";
+import StyledBlock from "components/styled-block";
+import { Button } from "@/components/ui/button";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
 export async function generateStaticParams() {
   const slugs = await client.fetch<Slug[]>(`*[_type == "post"]{slug}`);
@@ -23,7 +23,6 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   const post = await client.fetch<PostSchemaType>(
     `*[_type == "post" && slug.current == "${params.slug}"][0]`
   );
-  console.log(post);
   if (!post) {
     return;
   }
@@ -51,11 +50,11 @@ export async function generateMetadata({ params }): Promise<Metadata> {
       type: "article",
       publishedTime: post._createdAt,
       // url: `https://leerob.io/blog/${slug}`,
-      images: [
+      images: post.mainImage ? [
         {
           url: urlForImage(post.mainImage).url(),
         },
-      ],
+      ] : [],
     },
     // twitter: {
     //   card: "summary_large_image",
@@ -68,7 +67,23 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
 export default async function Blog({ params }) {
   const post = await client.fetch<PostSchemaType>(
-    `*[_type == "post" && slug.current == "${params.slug}"][0]`
+    `*[_type == "post" && slug.current == "${params.slug}"]{
+      ..., 
+      body[]{
+        ...,
+        markDefs[]{
+          ...,
+          _type == "internalLink" => {
+            "slug": @.reference->slug
+          }
+        },
+      },
+    }[0]`,
+    {
+      next: {
+        revalidate: 3600 // look for updates to revalidate cache every hour
+      }
+    }
   );
 
   if (!post) {
@@ -77,18 +92,32 @@ export default async function Blog({ params }) {
 
   return (
     <section>
-      <h1 className="font-bold text-3xl font-serif max-w-[650px]">
+      <h1 className="font-extrabold text-3xl max-w-[650px]">
         <Balancer>{post.title}</Balancer>
       </h1>
-      <div className="grid grid-cols-[auto_1fr_auto] items-center mt-4 mb-8 font-mono text-sm max-w-[650px]">
-        <div className="bg-neutral-100 dark:bg-neutral-800 rounded-md px-2 py-1 tracking-tighter">
+      <div className="grid grid-cols-[auto_1fr_auto] pb-8 max-w-[650px]">
+        <div className="pt-1 tracking-tighter text-muted-foreground">
           {prettyPrintDate(post.publishedAt)}
         </div>
-        <div className="h-[0.2em] bg-neutral-50 dark:bg-neutral-800 mx-2" />
       </div>
-      <IdealImage image={post.mainImage} />
-      <h3>{post.body[0].children[0].text}</h3>
-      {/* <Mdx code={post.body.code} tweets={tweets} /> */}
+      {post.mainImage ?
+        <div className="flex justify-center">
+          <IdealImage image={post.mainImage} />
+        </div> : null
+      }
+      <div className="pt-4">
+        <StyledBlock content={post.body} />
+      </div>
+      <div className="pt-12 flex justify-end">
+        <Button asChild variant="ghost">
+          <Link href={"/blog"}>
+            <ArrowLeftIcon className="font-bold h-4 w-4" />
+            <span className="font-bold pl-2">
+              Return to All Posts
+            </span>
+          </Link>
+        </Button>
+      </div>
     </section>
   );
 }

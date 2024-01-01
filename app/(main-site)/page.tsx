@@ -1,10 +1,7 @@
-import Link from "next/link";
-import Image from "next/image";
 import { getBlogViews, getTweetCount, getStarCount } from "lib/metrics";
-import { name, about, bio, avatar } from "lib/info";
+import { name, about } from "lib/info";
 import { BlurredBackground } from "@/components/ui/blurred-background";
 import {
-  CornersIcon,
   GitHubLogoIcon,
   LinkedInLogoIcon,
   TwitterLogoIcon,
@@ -12,10 +9,10 @@ import {
 
 export const revalidate = 60;
 export const metadata = {
-  description: "Developer, writer, and creator.",
+  description: "Developer of accessible and engaging user experiences.",
   openGraph: {
     title: "Darius McFarland",
-    description: "Developer, writer, and creator.",
+    description: "Developer of accessible and engaging user experiences.",
     url: "https://leerob.io",
     siteName: "Darius McFarland",
     images: [
@@ -48,7 +45,7 @@ export default async function HomePage() {
       <div className="mt-12 h-[37.25rem]">
         <BlurredBackground />
       </div>
-      <div className="">
+      <div>
         <span className="text-2xl text-muted-foreground">{"What's good? I'm"}</span>
         <h1 className="font-bold text-3xl mt-1 text-sky-500 dark:text-cyan-500">{name}</h1>
         <p className="text-lg my-5 max-w-[460px] text-neutral-950 dark:text-neutral-100">
@@ -119,7 +116,7 @@ export default async function HomePage() {
 
         <h2 className="mt-4 text-2xl dark:text-muted-foreground font-medium">Hit me up</h2>
 
-        <ul className="flex flex-row md:flex-col justify-center mt-4 pb-4 md:pl-4 space-x-4 md:space-x-0  md:space-y-4 font-sm text-neutral-800 dark:text-neutral-100">
+        <ul className="flex flex-row md:flex-col justify-center mt-4 pb-4 md:pl-4 space-x-4 md:space-x-0  md:space-y-4 font-sm text-muted-foreground dark:text-neutral-100">
           <li>
             <a
               className="flex items-center hover:text-neutral-700 dark:hover:text-neutral-200 transition-all"

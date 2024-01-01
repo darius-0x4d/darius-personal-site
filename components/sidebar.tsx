@@ -13,68 +13,37 @@ const navItems = {
     y: 0,
     w: "64px",
   },
-  "/about": {
-    name: "about",
-    x: 64,
-    y: 35,
-    w: "65px",
-  },
   "/blog": {
     name: "blog",
-    x: 127,
-    y: 69,
+    x: 63,
+    y: 34,
     w: "56px",
   },
   "/guestbook": {
     name: "guestbook",
-    x: 182,
-    y: 104,
+    x: 118,
+    y: 69,
     w: "100px",
   },
 };
 
 function Logo() {
   return (
-    <Link aria-label="Lee Robinson" href="/">
-      <motion.svg
-        className="text-black dark:text-white h-[25px] md:h-[37px]"
-        width="25"
-        height="37"
-        viewBox="0 0 232 316"
-        fill="none"
+    <Link aria-label="Darius McFarland" href="/">
+      <svg
         xmlns="http://www.w3.org/2000/svg"
+        width="35"
+        height="35"
+        aria-hidden="true"
+        viewBox="0 0 128 128"
+        className="fill-sky-500 dark:fill-cyan-500"
       >
-        <motion.path
-          initial={{
-            opacity: 0,
-            pathLength: 0,
-          }}
-          animate={{
-            opacity: 1,
-            pathLength: 1,
-          }}
-          transition={{
-            duration: 0.5,
-            type: "spring",
-            stiffness: 50,
-          }}
-          d="M39 316V0"
-          stroke="currentColor"
-          strokeWidth={78}
-        />
-        <motion.path
-          initial={{ x: -200, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{
-            duration: 0.5,
-            type: "spring",
-            stiffness: 50,
-          }}
-          d="M232 314.998H129.852L232 232.887V314.998Z"
-          fill="currentColor"
-        />
-      </motion.svg>
+        <path
+          d="M65.71 15.31h-43.6c-1.25 0-2.24 1-2.24 2.24v100.96c0 1.24 1 2.24 2.24 2.24H65.7c30.15 0 50.43-21.19 50.43-52.73 0-31.53-20.27-52.71-50.42-52.71zm-1.29 80.8c-.28 0-.54-.07-.79-.16-.06.01-.11.03-.17.03-.08.01-.14.04-.22.04h-14.7c-1.2 0-2.16-.97-2.16-2.16V42.19c0-1.19.96-2.16 2.16-2.16h14.7c.08 0 .14.03.22.04.05 0 .11.02.17.03.25-.09.51-.16.79-.16.43 0 .86.04 1.29.06.75.03 1.5.09 2.24.18 13.11 1.63 21.69 12.39 21.69 27.84s-8.59 26.21-21.69 27.84c-.74.09-1.49.15-2.24.18-.43.03-.86.07-1.29.07z"
+        ></path>
+      </svg>
     </Link>
+
   );
 }
 
@@ -92,7 +61,7 @@ export default function Navbar() {
           <Logo />
         </div>
         <nav
-          className="flex flex-row md:flex-col items-start relative overflow-hidden px-4 md:px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
+          className="flex flex-row md:flex-col items-start relative overflow-hidden pl-4 pr-8 justify-between md:px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
           id="nav"
         >
           <div className="flex flex-row md:flex-col space-x-0 pr-10 mb-2 mt-2 md:mt-0">
@@ -157,7 +126,9 @@ export default function Navbar() {
               );
             })}
           </div>
-          <ModeToggle />
+          <div className="mt-1 md:mt-0">
+            <ModeToggle />
+          </div>
         </nav>
       </div>
     </aside>

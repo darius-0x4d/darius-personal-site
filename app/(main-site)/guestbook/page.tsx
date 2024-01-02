@@ -2,7 +2,7 @@ import { queryBuilder } from "lib/planetscale";
 import { SignIn, SignOut } from "./actions";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "pages/api/auth/[...nextauth]";
-import Form from "./form";
+import GuestbookForm from "./guestbook-form";
 
 async function getGuestbook() {
   const data = await queryBuilder
@@ -17,7 +17,7 @@ async function getGuestbook() {
 
 export const metadata = {
   title: "Guestbook",
-  description: "Sign my guestbook and leave your mark.",
+  description: "Leave your message for everyone in the guestbook!",
 };
 
 export const dynamic = "force-dynamic";
@@ -49,19 +49,18 @@ export default async function GuestbookPage() {
 
   return (
     <section>
-      <h1 className="font-bold text-3xl font-serif mb-5">Guestbook</h1>
-      {session?.user ? (
-        <>
-          <Form />
-          <SignOut />
-        </>
-      ) : (
-        <SignIn />
-      )}
+      <div className="flex flex-row">
+        <h1 className="font-bold text-3xl mb-5 text-sky-500 dark:text-cyan-500 flex-auto">
+          Guestbook
+        </h1>
+        {session?.user ? <SignOut /> : null}
+      </div>
+
+      {session?.user ? <GuestbookForm /> : <SignIn />}
       {entries.map((entry) => (
         <div key={entry.id} className="flex flex-col space-y-1 mb-4">
-          <div className="w-full text-sm">
-            <span className="text-neutral-600 dark:text-neutral-400 mr-1">
+          <div className="w-full">
+            <span className="text-muted-foreground mr-1 font-bold">
               {entry.created_by}:
             </span>
             {entry.body}

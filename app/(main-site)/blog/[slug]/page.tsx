@@ -10,6 +10,7 @@ import StyledBlock from "components/styled-block";
 import { Button } from "@/components/ui/button";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
+import ViewCounter from "../view-counter";
 
 export async function generateStaticParams() {
   const slugs = await client.fetch<Slug[]>(`*[_type == "post"]{slug}`);
@@ -50,11 +51,13 @@ export async function generateMetadata({ params }): Promise<Metadata> {
       type: "article",
       publishedTime: post._createdAt,
       // url: `https://leerob.io/blog/${slug}`,
-      images: post.mainImage ? [
-        {
-          url: urlForImage(post.mainImage).url(),
-        },
-      ] : [],
+      images: post.mainImage
+        ? [
+            {
+              url: urlForImage(post.mainImage).url(),
+            },
+          ]
+        : [],
     },
     // twitter: {
     //   card: "summary_large_image",
@@ -81,8 +84,8 @@ export default async function Blog({ params }) {
     }[0]`,
     {
       next: {
-        revalidate: 3600 // look for updates to revalidate cache every hour
-      }
+        revalidate: 3600, // look for updates to revalidate cache every hour
+      },
     }
   );
 
@@ -92,19 +95,22 @@ export default async function Blog({ params }) {
 
   return (
     <section>
-      <h1 className="font-extrabold text-3xl max-w-[650px]">
+      <h1 className="font-extrabold text-3xl max-w-[650px] md:max-w-full">
         <Balancer>{post.title}</Balancer>
       </h1>
-      <div className="grid grid-cols-[auto_1fr_auto] pb-8 max-w-[650px]">
+      <div className="grid grid-cols-[auto_1fr_auto] pb-8 pr-2 justify-items-end max-w-[650px] md:max-w-full">
         <div className="pt-1 tracking-tighter text-muted-foreground">
           {prettyPrintDate(post.publishedAt)}
         </div>
+        <div className="text-muted-foreground tracking-tighter">
+          <ViewCounter slug={params.slug} trackView></ViewCounter>
+        </div>
       </div>
-      {post.mainImage ?
+      {post.mainImage ? (
         <div className="flex justify-center">
           <IdealImage image={post.mainImage} />
-        </div> : null
-      }
+        </div>
+      ) : null}
       <div className="pt-4">
         <StyledBlock content={post.body} />
       </div>
@@ -112,9 +118,7 @@ export default async function Blog({ params }) {
         <Button asChild variant="ghost">
           <Link href={"/blog"}>
             <ArrowLeftIcon className="font-bold h-4 w-4" />
-            <span className="font-bold pl-2">
-              Return to All Posts
-            </span>
+            <span className="font-bold pl-2">Return to All Posts</span>
           </Link>
         </Button>
       </div>

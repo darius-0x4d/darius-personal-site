@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model categories {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(255)
+}
+
+model guestbook {
+  id          Int       @id @default(autoincrement())
+  email       String
+  body        String
+  created_by  String
+  created_at  DateTime @default(now())
+  updated_at  DateTime? @updatedAt
+}
+
+model views {
+  slug        String    @id
+  count       Int
+}

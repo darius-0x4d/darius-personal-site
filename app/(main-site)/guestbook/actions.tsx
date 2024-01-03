@@ -1,7 +1,19 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ExitIcon, GitHubLogoIcon } from "@radix-ui/react-icons";
+import {
+  DialogTrigger,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  Dialog,
+} from "@/components/ui/dialog";
+import {
+  ExitIcon,
+  GitHubLogoIcon,
+  MagnifyingGlassIcon,
+} from "@radix-ui/react-icons";
 import { signIn, signOut } from "next-auth/react";
 
 export function SignOut() {
@@ -17,9 +29,37 @@ export function SignOut() {
 
 export function SignIn() {
   return (
-    <Button className="mb-8" onClick={() => signIn("github")}>
-      <GitHubLogoIcon />
-      <div className="ml-3">Sign in with GitHub</div>
-    </Button>
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button className="mb-8">Sign the Guestbook</Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Sign In</DialogTitle>
+          <DialogDescription>
+            Choose an account to use to sign the guestbook. Your name associated
+            with the account will appear next to your message.
+          </DialogDescription>
+        </DialogHeader>
+        <div className="grid gap-4 py-4 max-w-fit justify-self-center">
+          <Button
+            className="mb-2"
+            variant="outline"
+            onClick={() => signIn("github")}
+          >
+            <GitHubLogoIcon />
+            <div className="ml-3">Sign in with GitHub</div>
+          </Button>
+          <Button
+            className="mb-2"
+            variant="outline"
+            onClick={() => signIn("google")}
+          >
+            <MagnifyingGlassIcon />
+            <div className="ml-3">Sign in with Google</div>
+          </Button>
+        </div>
+      </DialogContent>
+    </Dialog>
   );
 }

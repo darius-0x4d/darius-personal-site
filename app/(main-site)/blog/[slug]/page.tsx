@@ -12,20 +12,12 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import ViewCounter from "../view-counter";
 
-// export async function generateStaticParams() {
-//   const slugs = await client.fetch<Slug[]>(`*[_type == "post"]{slug}`);
-
-//   return slugs.map((slug) => ({
-//     slug: slug.current,
-//   }));
-// }
-
 export async function generateMetadata({ params }): Promise<Metadata> {
   const post = await client.fetch<PostSchemaType>(
     `*[_type == "post" && slug.current == "${params.slug}"][0]`,
     {
       next: {
-        revalidate: 1, // look for updates to revalidate cache every hour
+        revalidate: 3600, // look for updates to revalidate cache every hour
       },
     }
   );

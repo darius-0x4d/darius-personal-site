@@ -1,48 +1,46 @@
-import { ImageResponse } from '@vercel/og';
-import { NextRequest } from 'next/server';
+import { ImageResponse } from "@vercel/og";
+import { NextRequest } from "next/server";
 
 export const config = {
-  runtime: 'edge',
+  runtime: "edge",
 };
 
 const font = fetch(
-  new URL('../../public/fonts/kaisei-tokumin-bold.ttf', import.meta.url)
+  new URL("../../public/fonts/kaisei-tokumin-bold.ttf", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 export default async function handler(req: NextRequest) {
   const { searchParams } = req.nextUrl;
-  const postTitle = searchParams.get('title');
+  const postTitle = searchParams.get("title");
   const fontData = await font;
 
   return new ImageResponse(
     (
       <div
         style={{
-          height: '100%',
-          width: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'flex-start',
-          justifyContent: 'center',
-          backgroundImage: 'url(https://leerob.io/og-bg.png)',
+          display: "flex",
+          height: "100%",
+          width: "100%",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
+          backgroundImage: "linear-gradient(to bottom, #0ea5e9, #fff1f1)",
+          fontSize: 60,
+          letterSpacing: -2,
+          fontWeight: 700,
+          textAlign: "center",
         }}
       >
-        <div
-          style={{
-            marginLeft: 190,
-            marginRight: 190,
-            display: 'flex',
-            fontSize: 130,
-            fontFamily: 'Kaisei Tokumin',
-            letterSpacing: '-0.05em',
-            fontStyle: 'normal',
-            color: 'white',
-            lineHeight: '120px',
-            whiteSpace: 'pre-wrap',
-          }}
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="350"
+          height="350"
+          aria-hidden="true"
+          viewBox="0 0 128 128"
+          fill="#0ea5e9"
         >
-          {postTitle}
-        </div>
+          <path d="M65.71 15.31h-43.6c-1.25 0-2.24 1-2.24 2.24v100.96c0 1.24 1 2.24 2.24 2.24H65.7c30.15 0 50.43-21.19 50.43-52.73 0-31.53-20.27-52.71-50.42-52.71zm-1.29 80.8c-.28 0-.54-.07-.79-.16-.06.01-.11.03-.17.03-.08.01-.14.04-.22.04h-14.7c-1.2 0-2.16-.97-2.16-2.16V42.19c0-1.19.96-2.16 2.16-2.16h14.7c.08 0 .14.03.22.04.05 0 .11.02.17.03.25-.09.51-.16.79-.16.43 0 .86.04 1.29.06.75.03 1.5.09 2.24.18 13.11 1.63 21.69 12.39 21.69 27.84s-8.59 26.21-21.69 27.84c-.74.09-1.49.15-2.24.18-.43.03-.86.07-1.29.07z"></path>
+        </svg>
       </div>
     ),
     {
@@ -50,9 +48,9 @@ export default async function handler(req: NextRequest) {
       height: 1080,
       fonts: [
         {
-          name: 'Kaisei Tokumin',
+          name: "Kaisei Tokumin",
           data: fontData,
-          style: 'normal',
+          style: "normal",
         },
       ],
     }

@@ -13,7 +13,7 @@ export const metadata = {
   openGraph: {
     title: "Darius McFarland",
     description: "Developer of accessible and engaging user experiences.",
-    url: "https://leerob.io",
+    url: "https://dariusmcfarland.com",
     siteName: "Darius McFarland",
     images: [
       {
@@ -46,12 +46,18 @@ export default async function HomePage() {
         <BlurredBackground />
       </div>
       <div>
-        <span className="text-2xl text-muted-foreground">{"What's good? I'm"}</span>
-        <h1 className="font-bold text-3xl mt-1 text-sky-500 dark:text-cyan-500">{name}</h1>
+        <span className="text-2xl text-muted-foreground">
+          {"What's good? I'm"}
+        </span>
+        <h1 className="font-bold text-3xl mt-1 text-sky-500 dark:text-cyan-500">
+          {name}
+        </h1>
         <p className="text-lg my-5 max-w-[460px] text-neutral-950 dark:text-neutral-100">
           {about()}
         </p>
-        <h2 className="text-2xl dark:text-muted-foreground font-medium">{"How'd I get here?"}</h2>
+        <h2 className="text-2xl dark:text-muted-foreground font-medium">
+          {"How'd I get here?"}
+        </h2>
         <section className="flex justify-center md:justify-normal pt-4 md:pl-8">
           <div className="w-80">
             <ul>
@@ -68,7 +74,9 @@ export default async function HomePage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-lg font-bold dark:text-cyan-500">August 2020 - Present</p>
+                  <p className="text-lg font-bold dark:text-cyan-500">
+                    August 2020 - Present
+                  </p>
                   <p className="mt-2 text-md text-neutral-800 dark:text-neutral-200">
                     Software Engineer at BlackRock
                   </p>
@@ -87,14 +95,16 @@ export default async function HomePage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-lg font-bold dark:text-cyan-500">May 2020</p>
+                  <p className="text-lg font-bold dark:text-cyan-500">
+                    May 2020
+                  </p>
                   <p className="mt-2 text-md text-neutral-800 dark:text-neutral-200">
                     Graduated from NC State University
                   </p>
                 </div>
               </li>
               <li className="relative flex items-baseline gap-6 pb-5">
-                <div >
+                <div>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="12"
@@ -106,15 +116,21 @@ export default async function HomePage() {
                   </svg>
                 </div>
                 <div>
-                  <p className="text-lg font-bold dark:text-cyan-500">May 2019 - August 2019</p>
-                  <p className="mt-2 text-md text-neutral-800 dark:text-neutral-200">Interned with BlackRock</p>
+                  <p className="text-lg font-bold dark:text-cyan-500">
+                    May 2019 - August 2019
+                  </p>
+                  <p className="mt-2 text-md text-neutral-800 dark:text-neutral-200">
+                    Interned with BlackRock
+                  </p>
                 </div>
               </li>
             </ul>
           </div>
         </section>
 
-        <h2 className="mt-4 text-2xl dark:text-muted-foreground font-medium">Hit me up</h2>
+        <h2 className="mt-4 text-2xl dark:text-muted-foreground font-medium">
+          Hit me up
+        </h2>
 
         <ul className="flex flex-row md:flex-col justify-center mt-4 pb-4 md:pl-4 space-x-4 md:space-x-0  md:space-y-4 font-sm text-muted-foreground dark:text-neutral-100">
           <li>

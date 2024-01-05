@@ -44,13 +44,13 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 
   return {
     title: post.title,
-    description: post.body[0].children[0].text,
+    description: post.overview[0].children[0].text,
     openGraph: {
       title: post.title,
-      description: post.body[0].children[0].text,
+      description: post.overview[0].children[0].text,
       type: "article",
-      publishedTime: post._createdAt,
-      // url: `https://leerob.io/blog/${slug}`,
+      publishedTime: post.publishedAt,
+      url: `https://dariusmcfarland.com/blog/${params.slug}`,
       images: post.mainImage
         ? [
             {

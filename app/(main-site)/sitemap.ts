@@ -11,9 +11,9 @@ export default async function sitemap() {
     }
   );
 
-  blogs.map((post) => ({
-    url: `https://dariusmcfarland.com/blog/${post.slug}`,
-    lastModified: post.publishedAt,
+  const blogPosts = blogs.map((post) => ({
+    url: `https://dariusmcfarland.com/blog/${post.slug.current}`,
+    lastModified: post.publishedAt.split("T")[0],
   }));
 
   const routes = ["", "/blog", "/guestbook"].map((route) => ({
@@ -21,5 +21,5 @@ export default async function sitemap() {
     lastModified: new Date().toISOString().split("T")[0],
   }));
 
-  return [...routes, ...blogs];
+  return [...routes, ...blogPosts];
 }

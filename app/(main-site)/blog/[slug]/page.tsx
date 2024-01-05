@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 import { client } from "sanity/lib/client";
-import { PostSchemaType, Slug } from "sanity/schema-types/post-schema-type";
+import { PostSchemaType } from "sanity/schema-types/post-schema-type";
 import { Metadata } from "next";
 import { urlForImage } from "sanity/lib/image";
 import { IdealImage } from "sanity/lib/ideal-image";
@@ -40,7 +40,11 @@ export async function generateMetadata({ params }): Promise<Metadata> {
               url: urlForImage(post.mainImage).url(),
             },
           ]
-        : [],
+        : [
+            {
+              url: `https://dariusmcfarland.com/blog/og/${params.slug}`, // fall back to our custom og image if we don't have a main image for the post
+            },
+          ],
     },
     twitter: {
       card: "summary_large_image",
@@ -52,7 +56,11 @@ export async function generateMetadata({ params }): Promise<Metadata> {
               url: urlForImage(post.mainImage).url(),
             },
           ]
-        : [],
+        : [
+            {
+              url: `https://dariusmcfarland.com/blog/og/${params.slug}`,
+            },
+          ],
       creator: "@darius_0x4d",
       site: "@darius_0x4d",
     },

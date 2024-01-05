@@ -38,6 +38,7 @@ export const metadata = {
     google: "eZSdmzAXlLkKhNJzfgwDqWORghxnJ8qR9_CHdAh5-xw",
     yandex: "14d2e73487fa6c71",
   },
+  metadataBase: new URL("https://dariusmcfarland.com"),
 };
 
 export default function RootLayout({

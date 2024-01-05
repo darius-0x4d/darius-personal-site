@@ -18,6 +18,26 @@ async function getGuestbook() {
 export const metadata = {
   title: "Guestbook",
   description: "Leave your message for everyone in the guestbook!",
+  openGraph: {
+    title: "Guestbook | Darius McFarland",
+    description: "Leave your message for everyone in the guestbook!",
+    url: "https://dariusmcfarland.com/guestbook",
+    siteName: "Darius McFarland",
+    images: [
+      {
+        url: "https://dariusmcfarland.com/og.jpg",
+        width: 1920,
+        height: 1080,
+      },
+    ],
+    locale: "en-US",
+    type: "website",
+  },
+  twitter: {
+    title: "Guestbook | Darius McFarland",
+    creator: "@darius_0x4d",
+    site: "@darius_0x4d",
+  },
 };
 
 export const dynamic = "force-dynamic";

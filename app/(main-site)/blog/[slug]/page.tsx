@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Balancer from "react-wrap-balancer";
 import { client } from "sanity/lib/client";
-import { PostSchemaType, Slug } from "sanity/schema-types/post-schema-type";
+import { PostSchemaType } from "sanity/schema-types/post-schema-type";
 import { Metadata } from "next";
 import { urlForImage } from "sanity/lib/image";
 import { IdealImage } from "sanity/lib/ideal-image";
@@ -12,59 +12,58 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 import ViewCounter from "../view-counter";
 
-export async function generateStaticParams() {
-  const slugs = await client.fetch<Slug[]>(`*[_type == "post"]{slug}`);
-
-  return slugs.map((slug) => ({
-    slug: slug.current,
-  }));
-}
-
 export async function generateMetadata({ params }): Promise<Metadata> {
   const post = await client.fetch<PostSchemaType>(
-    `*[_type == "post" && slug.current == "${params.slug}"][0]`
+    `*[_type == "post" && slug.current == "${params.slug}"][0]`,
+    {
+      next: {
+        revalidate: 3600, // look for updates to revalidate cache every hour
+      },
+    }
   );
   if (!post) {
     return;
   }
 
-  // const {
-  //   title: {
-  //     title,
-  //     default: "Another Blog Post",
-  //   },
-  //   publishedAt: publishedTime,
-  //   summary: description,
-  //   image,
-  //   slug,
-  // } = post;
-  // const ogImage = image
-  //   ? `https://leerob.io${image}`
-  //   : `https://leerob.io/api/og?title=${title}`;
-
   return {
     title: post.title,
-    description: post.body[0].children[0].text,
+    description: post.overview[0].children[0].text,
     openGraph: {
       title: post.title,
-      description: post.body[0].children[0].text,
+      description: post.overview[0].children[0].text,
       type: "article",
-      publishedTime: post._createdAt,
-      // url: `https://leerob.io/blog/${slug}`,
+      publishedTime: post.publishedAt,
+      url: `https://dariusmcfarland.com/blog/${params.slug}`,
       images: post.mainImage
         ? [
             {
               url: urlForImage(post.mainImage).url(),
             },
           ]
-        : [],
+        : [
+            {
+              url: `https://dariusmcfarland.com/blog/og/${params.slug}`, // fall back to our custom og image if we don't have a main image for the post
+            },
+          ],
     },
-    // twitter: {
-    //   card: "summary_large_image",
-    //   title,
-    //   description,
-    //   images: [ogImage],
-    // },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.overview[0].children[0].text,
+      images: post.mainImage
+        ? [
+            {
+              url: urlForImage(post.mainImage).url(),
+            },
+          ]
+        : [
+            {
+              url: `https://dariusmcfarland.com/blog/og/${params.slug}`,
+            },
+          ],
+      creator: "@darius_0x4d",
+      site: "@darius_0x4d",
+    },
   };
 }
 

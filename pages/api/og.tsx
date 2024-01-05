@@ -5,15 +5,7 @@ export const config = {
   runtime: "edge",
 };
 
-const font = fetch(
-  new URL("../../public/fonts/kaisei-tokumin-bold.ttf", import.meta.url)
-).then((res) => res.arrayBuffer());
-
 export default async function handler(req: NextRequest) {
-  const { searchParams } = req.nextUrl;
-  const postTitle = searchParams.get("title");
-  const fontData = await font;
-
   return new ImageResponse(
     (
       <div
@@ -24,11 +16,7 @@ export default async function handler(req: NextRequest) {
           alignItems: "center",
           justifyContent: "center",
           flexDirection: "column",
-          backgroundImage: "linear-gradient(to bottom, #0ea5e9, #fff1f1)",
-          fontSize: 60,
-          letterSpacing: -2,
-          fontWeight: 700,
-          textAlign: "center",
+          backgroundImage: "linear-gradient(to bottom, #Caebf9, #fff1f1)",
         }}
       >
         <svg
@@ -46,13 +34,6 @@ export default async function handler(req: NextRequest) {
     {
       width: 1920,
       height: 1080,
-      fonts: [
-        {
-          name: "Kaisei Tokumin",
-          data: fontData,
-          style: "normal",
-        },
-      ],
     }
   );
 }

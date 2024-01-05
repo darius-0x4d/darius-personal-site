@@ -16,7 +16,20 @@ import { Separator } from "@/components/ui/separator";
 
 export const metadata = {
   title: "Blog",
-  description: "Read my thoughts on software development, design, and more.",
+  description: "Check out my technical guides and other written content.",
+  openGraph: {
+    title: "Blog",
+    description: "Check out my technical guides and other written content.",
+    images: [
+      {
+        url: "https://dariusmcfarland.com/og.jpg",
+        width: 1920,
+        height: 1080,
+      },
+    ],
+    locale: "en-US",
+    type: "website",
+  },
 };
 
 export default async function BlogPage() {
@@ -24,8 +37,8 @@ export default async function BlogPage() {
     `*[_type == "post"]{..., "categories": categories[]->, "author": author->}`,
     {
       next: {
-        revalidate: 3600 // look for updates to revalidate cache every hour
-      }
+        revalidate: 3600, // look for updates to revalidate cache every hour
+      },
     }
   );
   // Create no blogs placeholder
@@ -41,15 +54,19 @@ export default async function BlogPage() {
               >
                 <div className="w-full flex md:flex-col">
                   <CardHeader className="grid md:grid-cols-3 items-start gap-8 space-y-0 w-full">
-                    {post.mainImage ?
+                    {post.mainImage ? (
                       <div className="justify-self-center md:col-span-1 md:justify-self-start">
                         <IdealImage image={post.mainImage} />
-                      </div> : null
-                    }
+                      </div>
+                    ) : null}
 
-
-                    <div className={`space-y-1 ${post.mainImage ? "md:col-span-2" : "md:col-span-3 md:px-24 md:justify-self-center md:col-start-1"}`}>
-
+                    <div
+                      className={`space-y-1 ${
+                        post.mainImage
+                          ? "md:col-span-2"
+                          : "md:col-span-3 md:px-24 md:justify-self-center md:col-start-1"
+                      }`}
+                    >
                       <div className="md:hidden flex space-x-4 text-sm text-muted-foreground pt-2 pb-4 grid-cols-2">
                         <div className="flex items-center col-span-1">
                           <CornersIcon className="mr-1 h-4 w-4 fill-sky-400 text-sky-400" />

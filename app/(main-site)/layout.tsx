@@ -5,9 +5,9 @@ import AnalyticsWrapper from "../../components/analytics";
 import { ThemeProvider } from "@/components/theme-provider";
 
 const raleway = Raleway({
-  subsets: ['latin'],
-  display: 'swap',
-})
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata = {
   title: {
@@ -26,7 +26,7 @@ export const metadata = {
     },
   },
   twitter: {
-    title: "Lee Robinson",
+    title: "Darius McFarland",
     card: "summary_large_image",
   },
   icons: {
@@ -45,11 +45,7 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <html
-        suppressHydrationWarning
-        lang="en"
-        className={raleway.className}
-      >
+      <html suppressHydrationWarning lang="en" className={raleway.className}>
         <body className="antialiased overflow-x-hidden max-w-4xl mb-40 flex flex-col md:flex-row mx-4 mt-8 md:mt-20 lg:mt-32 lg:mx-auto ">
           <ThemeProvider
             attribute="class"

@@ -17,7 +17,7 @@ export const metadata = {
     siteName: "Darius McFarland",
     images: [
       {
-        url: "https://leerob.io/og.jpg",
+        url: "https://dariusmcfarland.com/og.jpg",
         width: 1920,
         height: 1080,
       },

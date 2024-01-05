@@ -18,7 +18,7 @@ export const metadata = {
   title: "Blog",
   description: "Check out my technical guides and other written content.",
   openGraph: {
-    title: "Blog",
+    title: "Blog | Darius McFarland",
     description: "Check out my technical guides and other written content.",
     images: [
       {
@@ -27,8 +27,12 @@ export const metadata = {
         height: 1080,
       },
     ],
+    url: "https://dariusmcfarland.com/blog",
     locale: "en-US",
     type: "website",
+  },
+  twitter: {
+    title: "Blog | Darius McFarland",
   },
 };
 

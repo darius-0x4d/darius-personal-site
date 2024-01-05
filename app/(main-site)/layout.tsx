@@ -28,6 +28,8 @@ export const metadata = {
   twitter: {
     title: "Darius McFarland",
     card: "summary_large_image",
+    creator: "@darius_0x4d",
+    site: "@darius_0x4d",
   },
   icons: {
     shortcut: "/favicon.ico",

@@ -59,12 +59,18 @@ export async function generateMetadata({ params }): Promise<Metadata> {
           ]
         : [],
     },
-    // twitter: {
-    //   card: "summary_large_image",
-    //   title,
-    //   description,
-    //   images: [ogImage],
-    // },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.overview[0].children[0].text,
+      images: post.mainImage
+        ? [
+            {
+              url: urlForImage(post.mainImage).url(),
+            },
+          ]
+        : [],
+    },
   };
 }
 

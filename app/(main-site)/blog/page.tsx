@@ -33,6 +33,8 @@ export const metadata = {
   },
   twitter: {
     title: "Blog | Darius McFarland",
+    creator: "@darius_0x4d",
+    site: "@darius_0x4d",
   },
 };
 

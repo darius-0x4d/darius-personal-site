@@ -28,20 +28,6 @@ export async function generateMetadata({ params }): Promise<Metadata> {
     return;
   }
 
-  // const {
-  //   title: {
-  //     title,
-  //     default: "Another Blog Post",
-  //   },
-  //   publishedAt: publishedTime,
-  //   summary: description,
-  //   image,
-  //   slug,
-  // } = post;
-  // const ogImage = image
-  //   ? `https://leerob.io${image}`
-  //   : `https://leerob.io/api/og?title=${title}`;
-
   return {
     title: post.title,
     description: post.overview[0].children[0].text,
@@ -70,6 +56,8 @@ export async function generateMetadata({ params }): Promise<Metadata> {
             },
           ]
         : [],
+      creator: "@darius_0x4d",
+      site: "@darius_0x4d",
     },
   };
 }

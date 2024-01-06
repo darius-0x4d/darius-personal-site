@@ -29,6 +29,7 @@
     "@sanity/ui": "^1.0.0",
     "@sanity/vision": "3",
     "@types/dompurify": "^3.0.5",
+    "@types/react-syntax-highlighter": "^15.5.11",
     "@vercel/analytics": "^0.1.8",
     "@vercel/edge-config": "^0.1.1",
     "@vercel/og": "^0.0.27",

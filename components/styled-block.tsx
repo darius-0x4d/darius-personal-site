@@ -2,7 +2,6 @@ import { PortableText, PortableTextComponents } from "@portabletext/react";
 import { IdealImage } from "sanity/lib/ideal-image";
 import Link from "next/link";
 import SyntaxHighlighter from "react-syntax-highlighter";
-import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 const StyledBlock = (props) => {
   const { content } = props;
@@ -18,8 +17,16 @@ const StyledBlock = (props) => {
         );
       },
       code: ({ value }) => {
+        const className = {
+          className:
+            "bg-slate-200 dark:bg-slate-700 overflow-x-auto p-2 rounded-md",
+        };
         return (
-          <SyntaxHighlighter language={value.language} style={docco}>
+          <SyntaxHighlighter
+            language={value.language}
+            useInlineStyles={false}
+            {...className}
+          >
             {value.code}
           </SyntaxHighlighter>
         );

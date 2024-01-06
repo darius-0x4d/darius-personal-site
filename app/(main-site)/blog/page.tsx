@@ -40,7 +40,7 @@ export const metadata = {
 
 export default async function BlogPage() {
   const blogs = await client.fetch<PostSchemaType[]>(
-    `*[_type == "post"]{..., "categories": categories[]->, "author": author->} | order(_createdAt desc)`,
+    `*[_type == "post" && isArchived == false]{..., "categories": categories[]->, "author": author->} | order(_createdAt desc)`,
     {
       next: {
         revalidate: 3600, // look for updates to revalidate cache every hour

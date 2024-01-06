@@ -40,7 +40,7 @@ export const metadata = {
 
 export default async function BlogPage() {
   const blogs = await client.fetch<PostSchemaType[]>(
-    `*[_type == "post"]{..., "categories": categories[]->, "author": author->}`,
+    `*[_type == "post"]{..., "categories": categories[]->, "author": author->} | order(_createdAt desc)`,
     {
       next: {
         revalidate: 3600, // look for updates to revalidate cache every hour
@@ -52,7 +52,7 @@ export default async function BlogPage() {
     <>
       <main>
         <ul>
-          {blogs.reverse().map((post) => (
+          {blogs.map((post) => (
             <Card key={post._id} className="mt-8">
               <Link
                 className="flex md:flex-col space-y-1"

@@ -3,7 +3,7 @@ import { PostSchemaType } from "sanity/schema-types/post-schema-type";
 
 export default async function sitemap() {
   const blogs = await client.fetch<PostSchemaType[]>(
-    `*[_type == "post"]{..., "categories": categories[]->, "author": author->}`,
+    `*[_type == "post" && isArchived == false]{..., "categories": categories[]->, "author": author->}`,
     {
       next: {
         revalidate: 3600,

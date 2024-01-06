@@ -1,42 +1,42 @@
 export type PostSchemaType = {
-    _type: 'post';
-    _createdAt: string;
-    _updatedAt: string;
-    _id: string;
-    title: string;
-    slug: Slug;
-    mainImage: any;
-    body: any[];
-    overview: any[];
-    publishedAt: string;
-    categories: Categories[];
-    author: Author;
+  _type: "post";
+  _createdAt: string;
+  _updatedAt: string;
+  _id: string;
+  title: string;
+  slug: Slug;
+  mainImage: any;
+  body: any[];
+  overview: any[];
+  publishedAt: string;
+  categories: Categories[];
+  author: Author;
+  isArchived: boolean;
 };
 
 export type Slug = {
-    _type: 'slug';
-    current: string;
-}
+  _type: "slug";
+  current: string;
+};
 
 type Categories = {
-    description: string;
-    title: string;
-}
+  description: string;
+  title: string;
+};
 
 type Author = {
-    _type: 'author';
-    _id: string;
-    bio: any[];
-    image: Image;
-    name: string;
-
-}
+  _type: "author";
+  _id: string;
+  bio: any[];
+  image: Image;
+  name: string;
+};
 
 type Image = {
-    _type: 'image';
-    alt: string;
-    asset: {
-        _ref: string;
-        _type: 'reference';
-    }
-}
+  _type: "image";
+  alt: string;
+  asset: {
+    _ref: string;
+    _type: "reference";
+  };
+};

@@ -67,16 +67,12 @@ const StyledBlock = (props) => {
       em: ({ children }) => (
         <em className="text-muted-foreground font-semibold">{children}</em>
       ),
-      codeBlock: ({ children, value }) => {
-        console.log(value);
+      highlight: ({ children }) => {
+        // used as an inline code highlighter
         return (
-          // <Refractor
-          //   // In this example, `props` is the value of a `code` field
-          //   language={value.language ? value.language : "plain"}
-          //   value={value?.code}
-          //   markers={value?.highlightedLines ? value.highlightedLines : ""}
-          // />
-          <span>{children}</span>
+          <span className="bg-slate-200 text-black dark:bg-slate-700 dark:text-white text-sm m-0 p-[0.2rem] whitespace-break-spaces rounded-md font-mono">
+            {children}
+          </span>
         );
       },
     },

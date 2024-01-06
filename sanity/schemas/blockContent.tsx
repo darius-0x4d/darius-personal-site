@@ -1,5 +1,21 @@
-import { defineType, defineArrayMember } from "sanity";
+import { defineType, defineArrayMember, BlockDecoratorProps } from "sanity";
 import { LinkIcon } from "@sanity/icons";
+import { HighlighterIcon } from "lucide-react";
+import React from "react";
+
+const HighlightDecorator = (props: BlockDecoratorProps): JSX.Element => {
+  return (
+    <span
+      style={{
+        backgroundColor: "rgb(226 232 240)",
+        color: "black",
+        fontFamily: "monospace",
+      }}
+    >
+      {props.children}
+    </span>
+  );
+};
 
 /**
  * This is the schema type for block content used in the post document type
@@ -40,6 +56,12 @@ export default defineType({
         decorators: [
           { title: "Strong", value: "strong" },
           { title: "Emphasis", value: "em" },
+          {
+            title: "Highlight",
+            value: "highlight",
+            icon: HighlighterIcon,
+            component: HighlightDecorator,
+          },
         ],
         // Annotations can be any object structure - e.g. a link or a footnote.
         annotations: [

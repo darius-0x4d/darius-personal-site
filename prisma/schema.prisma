@@ -8,11 +8,6 @@ datasource db {
   relationMode = "prisma"
 }
 
-model categories {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(255)
-}
-
 model guestbook {
   id          Int       @id @default(autoincrement())
   email       String

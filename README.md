@@ -29,3 +29,7 @@ Create a `.env` file similar to [`.env.example`](https://github.com/darius-0x4d/
 ## Cloning / Forking
 
 Please review the [license](https://github.com/darius-0x4d/darius-personal-site/blob/main/LICENSE.txt) and remove all of my personal information by running `pnpm run setup`.
+
+## Acknowledgements
+
+Huge thanks to [Lee Robinson](https://leerob.io/) for making his personal website available as a [template](https://github.com/leerob/leerob.io) for others to use. Creating this website would've been a lot harder without his template as a starting point for me.

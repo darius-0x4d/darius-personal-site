@@ -1,4 +1,3 @@
-import { getBlogViews, getTweetCount, getStarCount } from "lib/metrics";
 import { name, about } from "lib/info";
 import { BlurredBackground } from "@/components/ui/blurred-background";
 import {
@@ -28,18 +27,6 @@ export const metadata = {
 };
 
 export default async function HomePage() {
-  let starCount, views, tweetCount;
-
-  try {
-    [starCount, views, tweetCount] = await Promise.all([
-      getStarCount(),
-      getBlogViews(),
-      getTweetCount(),
-    ]);
-  } catch (error) {
-    console.error(error);
-  }
-
   return (
     <section className="grid grid-rows-[repeat(2,_minmax(0,_0.5fr))] lg:gap-y-16">
       <div className="mt-12 h-[37.25rem]">

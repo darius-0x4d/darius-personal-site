@@ -6,7 +6,7 @@
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **CMS**: [Sanity CMS](https://www.sanity.io/)
-- **Database**: [PlanetScale](https://planetscale.com)
+- **Database**: [PlanetScale](https://planetscale.com) with [Prisma](https://www.prisma.io/)
 - **Authentication**: [NextAuth.js](https://next-auth.js.org)
 - **Deployment**: [Vercel](https://vercel.com)
 - **Styling**: [Tailwind](https://tailwindcss.com) & [shadcn/ui](https://ui.shadcn.com/)
@@ -28,4 +28,4 @@ Create a `.env` file similar to [`.env.example`](https://github.com/darius-0x4d/
 
 ## Cloning / Forking
 
-Please review the [license](https://github.com/darius-0x4d/darius-personal-site/blob/main/LICENSE.txt) and remove all of my personal information (blog posts, images, etc.) by running `pnpm run setup`.
+Please review the [license](https://github.com/darius-0x4d/darius-personal-site/blob/main/LICENSE.txt) and remove all of my personal information by running `pnpm run setup`.

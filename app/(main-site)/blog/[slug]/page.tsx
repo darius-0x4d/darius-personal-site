@@ -14,7 +14,7 @@ import ViewCounter from "../view-counter";
 
 export async function generateMetadata({ params }): Promise<Metadata> {
   const post = await client.fetch<PostSchemaType>(
-    `*[_type == "post" && slug.current == "${params.slug}"][0] && isArchived == false`,
+    `*[_type == "post" && slug.current == "${params.slug}" && isArchived == false][0]`,
     {
       next: {
         revalidate: 3600, // look for updates to revalidate cache every hour

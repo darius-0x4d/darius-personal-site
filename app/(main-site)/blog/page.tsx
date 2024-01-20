@@ -22,12 +22,12 @@ export const metadata = {
     description: "Check out my technical guides and other written content.",
     images: [
       {
-        url: "https://dariusmcfarland.com/og.jpg",
+        url: "https://www.dariusmcfarland.com/og.jpg",
         width: 1920,
         height: 1080,
       },
     ],
-    url: "https://dariusmcfarland.com/blog",
+    url: "https://www.dariusmcfarland.com/blog",
     locale: "en-US",
     type: "website",
   },

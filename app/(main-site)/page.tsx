@@ -12,11 +12,11 @@ export const metadata = {
   openGraph: {
     title: "Darius McFarland",
     description: "Developer of accessible and engaging user experiences.",
-    url: "https://dariusmcfarland.com",
+    url: "https://www.dariusmcfarland.com",
     siteName: "Darius McFarland",
     images: [
       {
-        url: "https://dariusmcfarland.com/og.jpg",
+        url: "https://www.dariusmcfarland.com/og.jpg",
         width: 1920,
         height: 1080,
       },

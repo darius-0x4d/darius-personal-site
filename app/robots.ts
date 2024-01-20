@@ -6,9 +6,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: "/studio/",
+        disallow: ["/studio/", "/local-studio/"],
       },
     ],
-    sitemap: "https://dariusmcfarland.com/sitemap.xml",
+    sitemap: "https://www.dariusmcfarland.com/sitemap.xml",
   };
 }

@@ -12,12 +12,12 @@ export default async function sitemap() {
   );
 
   const blogPosts = blogs.map((post) => ({
-    url: `https://dariusmcfarland.com/blog/${post.slug.current}`,
+    url: `https://www.dariusmcfarland.com/blog/${post.slug.current}`,
     lastModified: post.publishedAt.split("T")[0],
   }));
 
   const routes = ["", "/blog", "/guestbook"].map((route) => ({
-    url: `https://dariusmcfarland.com${route}`,
+    url: `https://www.dariusmcfarland.com${route}`,
     lastModified: new Date().toISOString().split("T")[0],
   }));
 

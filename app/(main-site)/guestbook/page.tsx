@@ -21,11 +21,11 @@ export const metadata = {
   openGraph: {
     title: "Guestbook | Darius McFarland",
     description: "Leave your message for everyone in the guestbook!",
-    url: "https://dariusmcfarland.com/guestbook",
+    url: "https://www.dariusmcfarland.com/guestbook",
     siteName: "Darius McFarland",
     images: [
       {
-        url: "https://dariusmcfarland.com/og.jpg",
+        url: "https://www.dariusmcfarland.com/og.jpg",
         width: 1920,
         height: 1080,
       },

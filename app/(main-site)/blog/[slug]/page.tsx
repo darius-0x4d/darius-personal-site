@@ -33,7 +33,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
       description: post.overview[0].children[0].text,
       type: "article",
       publishedTime: post.publishedAt,
-      url: `https://dariusmcfarland.com/blog/${params.slug}`,
+      url: `https://www.dariusmcfarland.com/blog/${params.slug}`,
       images: post.mainImage
         ? [
             {
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
           ]
         : [
             {
-              url: `https://dariusmcfarland.com/blog/og/${params.slug}`, // fall back to our custom og image if we don't have a main image for the post
+              url: `https://www.dariusmcfarland.com/blog/og/${params.slug}`, // fall back to our custom og image if we don't have a main image for the post
             },
           ],
     },
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
           ]
         : [
             {
-              url: `https://dariusmcfarland.com/blog/og/${params.slug}`,
+              url: `https://www.dariusmcfarland.com/blog/og/${params.slug}`,
             },
           ],
       creator: "@darius_0x4d",

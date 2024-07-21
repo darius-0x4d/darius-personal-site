@@ -101,9 +101,9 @@ export default async function Blog({ params }) {
         <div className="pt-1 tracking-tighter text-muted-foreground">
           {prettyPrintDate(post.publishedAt)}
         </div>
-        <div className="text-muted-foreground tracking-tighter">
+        {/* <div className="text-muted-foreground tracking-tighter">
           <ViewCounter slug={params.slug} trackView></ViewCounter>
-        </div>
+        </div> */}
       </div>
       {post.mainImage ? (
         <div className="flex justify-center">
